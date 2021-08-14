@@ -4,7 +4,7 @@ import { Layout } from "../../components"
 const signup = () => {
     return (
         <Layout text="Login">
-            This works too
+            Sign Up page
         </Layout>
     )
 }
