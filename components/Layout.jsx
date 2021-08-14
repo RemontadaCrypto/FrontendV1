@@ -16,7 +16,9 @@ const Layout = ({ children, text }) => {
                         <a>{text}</a>
                     </Link>}
             </header>
-            {children}
+            <section className="layout__child flex-ac-jc">
+                {children}
+            </section>
         </section>
     )
 }

@@ -1,0 +1,22 @@
+.signup {
+  width: 100%;
+  max-width: 580px;
+  height: 664px;
+  padding: 70px 80px;
+  border-radius: 16px;
+  background: $white;
+  h3 {
+    font-weight: bold;
+    font-size: 2rem;
+    color: $dark-blue;
+    text-align: center;
+  }
+  p {
+    color: $secondary-text-blue;
+    width: 80%;
+    margin: 30px auto;
+    text-align: center;
+  }
+  &__form {
+  }
+}

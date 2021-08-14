@@ -10,6 +10,8 @@
 @import "./_base/app";
 
 // COMPONENTS
+@import "./_components/layout";
+@import "./_components/input";
 
 // PAGES
-@import "./_components/layout";
+@import "./_pages/signup";
