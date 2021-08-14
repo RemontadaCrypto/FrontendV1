@@ -4,16 +4,7 @@ button {
   cursor: pointer;
 }
 a {
-  color: $blue;
-}
-
-.beta {
-  font-weight: 500;
-  font-size: 0.875rem;
-  color: #122d65;
-  border: 1px solid #122d65;
-  padding: 1px 6px;
-  border-radius: 4px;
+  color: $white;
 }
 
 .flex-ac-jb {
@@ -33,131 +24,13 @@ a {
   align-items: center;
 }
 
-.notification-bell {
-  @extend .flex-ac;
-}
+// @include media("<=phone2x") {
+//   .details-tab {
+//     justify-content: unset;
+//     padding-left: 5%;
+//   }
 
-.underline-link {
-  font-size: 14px;
-  line-height: 24px;
-  text-decoration-line: underline;
-  cursor: pointer;
-  color: rgba($dark-blue, 0.6);
-}
-
-.case-tag {
-  display: inline-flex;
-  align-items: center;
-  font-size: 0.75rem;
-  line-height: 16px;
-  white-space: nowrap;
-  color: $grey-100;
-  background: $light-grey;
-  height: 24px;
-  padding: 0 10px;
-  border-radius: 2px;
-  margin: 0 15px 15px 0;
-}
-
-.layout-tab {
-  position: fixed;
-  width: 100%;
-  z-index: 1;
-  height: 75px;
-  padding-left: 5%;
-  background: $grey-bg;
-  border-bottom: 1px solid $light-grey;
-  display: flex;
-  align-items: flex-end;
-  overflow: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-}
-
-.regular-cards {
-  .regular-card {
-    background: $white;
-    border: 1px solid $light-grey;
-    border-radius: 6px;
-    width: 100%;
-    height: 100%;
-    max-width: 472px;
-    max-height: 337px;
-    padding: 25px;
-    margin-bottom: 10px;
-    .regular-card__head {
-      h4 {
-        text-transform: uppercase;
-        font-weight: 500;
-        font-size: 0.75rem;
-        letter-spacing: 0.01em;
-        color: $grey-3;
-        margin: 0;
-      }
-      p {
-        font-size: 14px;
-        color: $dark-blue;
-        margin: 0;
-      }
-    }
-  }
-}
-
-.details-tab {
-  position: relative;
-  top: 75px;
-  height: 60px;
-  padding-left: 25%;
-  background: $white;
-  border-bottom: 1px solid $grey-border;
-  display: flex;
-  align-items: flex-end;
-  .tabs {
-    margin-right: 30px;
-  }
-}
-
-.profile-container {
-  padding: 0 3% 100px 3%;
-}
-
-.highlight {
-  font-size: 0.875rem;
-  color: $default;
-  padding: 0;
-  background: none;
-  font-weight: 500;
-}
-
-@include media("<=phone3x") {
-  .details-tab {
-    padding: 0;
-    justify-content: center;
-    white-space: nowrap;
-    overflow: scroll;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    &::-webkit-scrollbar {
-      display: none;
-    }
-  }
-  .regular-cards {
-    .regular-card {
-      max-width: 100%;
-    }
-  }
-}
-
-@include media("<=phone2x") {
-  .details-tab {
-    justify-content: unset;
-    padding-left: 5%;
-  }
-
-  .profile-container {
-    padding: 0 5% 100px 5%;
-  }
-}
+//   .profile-container {
+//     padding: 0 5% 100px 5%;
+//   }
+// }

@@ -1,0 +1,12 @@
+.layout {
+  height: 100vh;
+  background: $primary-blue;
+  color: $white;
+  padding: 50px 8%;
+  header {
+    a {
+      font-weight: 500;
+      font-size: 1rem;
+    }
+  }
+}
