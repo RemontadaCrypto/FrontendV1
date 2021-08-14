@@ -1,0 +1,11 @@
+html,
+body {
+  font-family: "Satoshi", sans-serif;
+  font-size: 1rem;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: local("Satoshi-Variable"),
+    url("../../fonts/Satoshi-Variable.ttf") format("truetype");
+}
