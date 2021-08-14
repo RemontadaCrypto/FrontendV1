@@ -1,10 +1,14 @@
 import React from 'react'
 import Image from "next/image"
 import Link from "next/link"
+import { motion } from "framer-motion"
 
 const Layout = ({ children, text }) => {
     return (
-        <section className="layout">
+        <motion.section
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { duration: 0.2, type: "tween" } }}
+            className="layout">
             <header className="flex-ac-jb">
                 <Link href="/">
                     <a>
@@ -19,7 +23,7 @@ const Layout = ({ children, text }) => {
             <section className="layout__child flex-ac-jc">
                 {children}
             </section>
-        </section>
+        </motion.section>
     )
 }
 

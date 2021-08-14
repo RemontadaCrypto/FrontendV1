@@ -5,6 +5,7 @@
   padding: 70px 80px;
   border-radius: 16px;
   background: $white;
+  margin-bottom: 100px;
   h3 {
     font-weight: bold;
     font-size: 2rem;
@@ -14,9 +15,25 @@
   p {
     color: $secondary-text-blue;
     width: 80%;
-    margin: 30px auto;
+    margin: 35px auto;
     text-align: center;
   }
-  &__form {
+  form {
+    max-width: 378px;
+    margin: auto;
+    .form-button {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 50px;
+    }
+  }
+  footer {
+    font-size: 20px;
+    text-align: center;
+    color: $dark-blue;
+    a {
+      color: $primary-blue;
+      font-weight: bold;
+    }
   }
 }

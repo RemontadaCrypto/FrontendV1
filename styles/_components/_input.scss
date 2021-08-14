@@ -1,7 +1,6 @@
 .input-field {
   margin: auto;
-  margin-bottom: 25px;
-  max-width: 378px;
+  margin-bottom: 30px;
   width: 100%;
   label {
     font-style: normal;
@@ -34,6 +33,7 @@
       color: #264980;
       &::placeholder {
         color: #0a1f35;
+        opacity: 0.5;
       }
     }
     svg {
