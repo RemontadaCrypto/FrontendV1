@@ -11,7 +11,7 @@
     display: block;
   }
   .input {
-    background: #dbe9ff;
+    background: $light-blue;
     border: 2px solid transparent;
     border-radius: 8px;
     padding: 0 15px;
@@ -39,5 +39,11 @@
     svg {
       cursor: pointer;
     }
+  }
+}
+
+@include media("<=phone2x") {
+  .input-field {
+    margin-bottom: 20px;
   }
 }

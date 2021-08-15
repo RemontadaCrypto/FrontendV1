@@ -9,12 +9,23 @@
 
   height: 64px;
   border-radius: 8px;
+  border: transparent;
+  outline: none;
   cursor: pointer;
   color: $white;
 }
 .btn {
   &--primary {
     width: 177px;
-    background: #0a2f35;
+    background: $primary-button-green;
+  }
+}
+
+@include media("<=phone2x") {
+  .btn {
+    &--primary {
+      width: 150px;
+      height: 50px;
+    }
   }
 }

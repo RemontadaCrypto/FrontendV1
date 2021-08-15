@@ -1,11 +1,11 @@
 import React from 'react'
 import { Layout } from "../../components"
-import SignUpForm from "./SignUpForm"
+import SignInForm from "./SignInForm"
 
 const signup = () => {
     return (
-        <Layout text="Login" url="/signin">
-            <SignUpForm />
+        <Layout text="Register" url="/signup">
+            <SignInForm />
         </Layout>
     )
 }

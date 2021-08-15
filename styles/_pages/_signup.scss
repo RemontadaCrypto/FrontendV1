@@ -6,6 +6,11 @@
   border-radius: 16px;
   background: $white;
   margin-bottom: 100px;
+  &.signin {
+    p {
+      width: 100%;
+    }
+  }
   h3 {
     font-weight: bold;
     font-size: 2rem;
@@ -34,6 +39,32 @@
     a {
       color: $primary-blue;
       font-weight: bold;
+    }
+  }
+}
+
+@include media("<=phone3x") {
+  .signup {
+    padding: 50px;
+    margin-bottom: 80px;
+  }
+}
+
+@include media("<=phone2x") {
+  .signup {
+    height: unset;
+    padding: 10% 8%;
+    margin-bottom: 50px;
+    h3 {
+      font-size: 1.75rem;
+    }
+    p {
+      margin: 20px auto;
+    }
+    form {
+      .form-button {
+        margin-bottom: 30px;
+      }
     }
   }
 }

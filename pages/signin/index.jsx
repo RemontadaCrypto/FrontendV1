@@ -1,11 +1,19 @@
-import React from 'react'
+import Head from "next/head";
+import dynamic from "next/dynamic";
+// import { Loading } from "@/components";
 
-const signin = () => {
+const DynamicComponent = dynamic(() => import("../../routes/signin"), {
+    loading: () => "loading...",
+});
+
+export default function Home() {
     return (
-        <div>
-            signin
-        </div>
-    )
+        <>
+            <Head>
+                <title>Remontada | Signin</title>
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
+            <DynamicComponent />
+        </>
+    );
 }
-
-export default signin

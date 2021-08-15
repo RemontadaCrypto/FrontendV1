@@ -11,3 +11,12 @@
     }
   }
 }
+
+@include media("<=phone2x") {
+  .layout {
+    padding: 40px 6%;
+    header {
+      margin-bottom: 50px;
+    }
+  }
+}

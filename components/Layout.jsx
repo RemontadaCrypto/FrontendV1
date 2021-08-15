@@ -3,7 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
 
-const Layout = ({ children, text }) => {
+const Layout = ({ children, text, url }) => {
     return (
         <motion.section
             initial={{ opacity: 0 }}
@@ -16,7 +16,7 @@ const Layout = ({ children, text }) => {
                     </a>
                 </Link>
                 {text &&
-                    <Link href={text.toLowerCase()}>
+                    <Link href={url}>
                         <a>{text}</a>
                     </Link>}
             </header>
