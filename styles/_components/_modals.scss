@@ -1,0 +1,28 @@
+.modal {
+  background: rgba($primary-blue, 0.5);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  &__main {
+    max-width: 864px;
+    width: 90%;
+    margin: auto;
+    margin-top: 15vh;
+
+    background: $white;
+    border-radius: 16px;
+    padding: 80px 70px;
+    position: relative;
+  }
+  [role="button"] {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+  }
+  &__child {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+}

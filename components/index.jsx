@@ -3,7 +3,8 @@ import Layout from "./Layout"
 import Input from "./Input"
 import Info from "./Info"
 import Button from "./Button"
+import Modal from "./Modal"
 import Loading from "./Loading"
 import InputSelect from "./InputSelect"
 
-export { Layout, MainLayout, Button, Loading, InputSelect, Input, Info }
+export { Layout, MainLayout, Button, Loading, InputSelect, Input, Info, Modal }

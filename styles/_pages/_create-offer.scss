@@ -93,4 +93,29 @@
   .btn {
     width: 226px;
   }
+  .modal {
+    &__child {
+      h3 {
+        margin: auto;
+      }
+      svg {
+        margin: 50px auto;
+      }
+      p {
+        font-size: 1.5rem;
+        line-height: 32px;
+        color: $primary-blue;
+        margin-bottom: 50px;
+        width: 60%;
+        text-align: center;
+      }
+      .btn-group {
+        display: flex;
+        gap: 10px;
+        .btn {
+          width: 260px;
+        }
+      }
+    }
+  }
 }

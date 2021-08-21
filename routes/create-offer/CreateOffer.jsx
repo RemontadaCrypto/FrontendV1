@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { useRouter } from "next/router"
-import { Button, InputSelect, Info } from "../../components"
+import { AnimatePresence } from "framer-motion"
+import { Button, InputSelect, Info, Modal } from "../../components"
 
 const CreateOffer = () => {
     const [value, setValue] = useState(null)
-    const router = useRouter()
+    const [open, setOpen] = useState(false)
     const options = [
         {
             value: 'BTC',
@@ -49,6 +49,10 @@ const CreateOffer = () => {
         setValue(selectedOption)
     }
 
+    const handleClose = () => {
+        setOpen(false)
+    }
+
     return (
         <section className="create-offer">
             <h2>Create your trade offer</h2>
@@ -85,7 +89,23 @@ const CreateOffer = () => {
 
             <Info array={info} />
 
-            <Button onClick={() => { console.log("Clicked") }} text="Proceed" btnClass="btn btn--primary" />
+            <Button onClick={() => { setOpen(true) }} text="Proceed" btnClass="btn btn--primary" />
+            <AnimatePresence>
+                {open &&
+                    <Modal handleClose={handleClose}>
+                        <h3>Offer created</h3>
+                        <svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="80" cy="80" r="80" fill="#CEFFE2" />
+                            <path d="M71.9999 92.688L108.768 55.916L114.428 61.572L71.9999 104L46.5439 78.544L52.1999 72.888L71.9999 92.688Z" fill="#2E774B" />
+                        </svg>
+                        <p>Your trade offer has successfully been created and added to the offers list</p>
+                        <div className="btn-group">
+                            <Button onClick={handleClose} text="Cancel" btnClass="btn btn--secondary" />
+                            <Button onClick={() => { console.log("clicked") }} text="Go to offers" btnClass="btn btn--primary" />
+                        </div>
+                    </Modal>
+                }
+            </AnimatePresence>
         </section>
     )
 }

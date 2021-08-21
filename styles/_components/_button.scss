@@ -19,6 +19,11 @@
     width: 177px;
     background: $primary-button-green;
   }
+  &--secondary {
+    height: 64px;
+    color: $primary-button-green;
+    background: $secondary-light-blue;
+  }
 }
 
 @include media("<=phone2x") {
