@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
+import { useRouter } from "next/router"
 import { AnimatePresence } from "framer-motion"
 import { Button, InputSelect, Info, Modal } from "../../components"
 
 const CreateOffer = () => {
     const [value, setValue] = useState(null)
     const [open, setOpen] = useState(false)
+    const router = useRouter()
     const options = [
         {
             value: 'BTC',
@@ -62,7 +64,7 @@ const CreateOffer = () => {
             <p>Set your prices to a specific dollar rate</p>
             <div className="create-offer__cards">
                 {card.map((item, index) => (
-                    <div className="create-offer__cards__item">
+                    <div key={index} className="create-offer__cards__item">
                         <h4>{item.title}</h4>
                         <p>{item.text}</p>
                     </div>
@@ -101,7 +103,7 @@ const CreateOffer = () => {
                         <p>Your trade offer has successfully been created and added to the offers list</p>
                         <div className="btn-group">
                             <Button onClick={handleClose} text="Cancel" btnClass="btn btn--secondary" />
-                            <Button onClick={() => { console.log("clicked") }} text="Go to offers" btnClass="btn btn--primary" />
+                            <Button onClick={() => { router.push("/offer-listings") }} text="Go to offers" btnClass="btn btn--primary" />
                         </div>
                     </Modal>
                 }
