@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import Link from "next/link"
+import { useRouter } from "next/router"
 import { Input, Button } from "../../components"
 
 const SignupForm = () => {
+    const router = useRouter()
     const [form, setForm] = useState({ email: "", password: "" })
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value })
@@ -10,7 +12,7 @@ const SignupForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log("submitted")
+        router.push("/register")
     }
 
     return (
