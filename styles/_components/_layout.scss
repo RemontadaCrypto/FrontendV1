@@ -10,6 +10,27 @@
       color: $white;
     }
   }
+  &.main {
+    .layout__child {
+      max-width: 982px;
+      width: 90%;
+      margin: auto;
+      &__nav {
+        margin-bottom: 20px;
+        span {
+          color: $white;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          font-size: 1.5rem;
+        }
+      }
+      &__main {
+        background: $white;
+        border-radius: 16px;
+      }
+    }
+  }
 }
 
 @include media("<=phone2x") {
@@ -17,6 +38,11 @@
     padding: 40px 6%;
     header {
       margin-bottom: 50px;
+    }
+    &.main {
+      .layout__child {
+        width: 100%;
+      }
     }
   }
 }

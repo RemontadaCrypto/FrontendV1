@@ -4,6 +4,10 @@ button {
   cursor: pointer;
 }
 
+[role="button"] {
+  cursor: pointer;
+}
+
 .flex-ac-jb {
   display: flex;
   align-items: center;
