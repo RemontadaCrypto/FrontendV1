@@ -1,0 +1,15 @@
+.css-2b097c-container {
+  background: $white;
+  border: 2px solid $form-border-blue;
+  border-radius: 8px;
+  max-width: 378px;
+  margin: auto;
+  svg {
+    width: 15px;
+    height: 15px;
+    fill: $secondary-blue;
+  }
+  .css-1okebmr-indicatorSeparator {
+    display: none;
+  }
+}

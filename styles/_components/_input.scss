@@ -6,7 +6,7 @@
     font-style: normal;
     font-weight: bold;
     font-size: 1rem;
-    color: #0a1f35;
+    color: $primary-blue;
     margin-bottom: 10px;
     display: block;
   }
@@ -20,7 +20,7 @@
     &:focus-within,
     &:hover,
     &:active {
-      border: 2px solid #8fb8cc;
+      border: 2px solid $form-border-blue;
     }
     input {
       border: transparent;
@@ -30,9 +30,9 @@
       height: 100%;
       font-weight: 500;
       font-size: 1rem;
-      color: #264980;
+      color: $secondary-blue;
       &::placeholder {
-        color: #0a1f35;
+        color: $dark-blue;
         opacity: 0.5;
       }
     }
