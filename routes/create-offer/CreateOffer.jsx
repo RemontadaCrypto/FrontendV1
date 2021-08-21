@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useRouter } from "next/router"
-import { Button, InputSelect } from "../../components"
+import { Button, InputSelect, Info } from "../../components"
 
 const CreateOffer = () => {
     const [value, setValue] = useState(null)
@@ -31,6 +31,7 @@ const CreateOffer = () => {
             USD Coin (USDC)</div>
         }
     ]
+
     const card = [
         {
             title: "Setup a Naira trade",
@@ -41,6 +42,9 @@ const CreateOffer = () => {
             text: "This option means your trade offer will be displayed in Dollar($) and the transactions will be made in Dollar."
         }
     ]
+
+    const info = ["Payments will be recieved only through bank transfers.", "Coins will only be released from escrow when payments have beenconfirmed from both parties.", "Transactions will be cancelled within 2 hours if further actionsare not taken on a trade and your coins will return to your walletfrom escrow."]
+
     const handleChange = (selectedOption) => {
         setValue(selectedOption)
     }
@@ -60,6 +64,7 @@ const CreateOffer = () => {
                     </div>
                 ))}
             </div>
+
             <h3>Set trade volumes</h3>
             <div className="create-offer__trades">
                 <div className="trades">
@@ -77,6 +82,8 @@ const CreateOffer = () => {
                     </div>
                 </div>
             </div>
+
+            <Info array={info} />
         </section>
     )
 }
