@@ -84,6 +84,8 @@ const CreateOffer = () => {
             </div>
 
             <Info array={info} />
+
+            <Button onClick={() => { console.log("Clicked") }} text="Proceed" btnClass="btn btn--primary" />
         </section>
     )
 }

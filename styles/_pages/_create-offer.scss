@@ -3,16 +3,19 @@
   flex-direction: column;
   align-items: center;
   color: $primary-blue;
+
   h2 {
     font-weight: bold;
     font-size: 2rem;
   }
+
   h3 {
     font-weight: bold;
     font-size: 1.5rem;
     margin-bottom: 20px;
     margin-top: 40px;
   }
+
   &__cards {
     display: grid;
     grid-gap: 20px;
@@ -28,6 +31,7 @@
       padding: 25px;
     }
   }
+
   &__trades {
     display: flex;
     gap: 20px;
@@ -41,6 +45,7 @@
     background: $primary-blue;
     border-radius: 8px;
   }
+
   .trades {
     width: 100%;
     max-width: 339px;
@@ -79,5 +84,13 @@
         color: $primary-blue;
       }
     }
+  }
+
+  .info {
+    margin: 50px auto;
+  }
+
+  .btn {
+    width: 226px;
   }
 }
