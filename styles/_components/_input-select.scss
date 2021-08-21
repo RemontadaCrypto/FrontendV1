@@ -3,6 +3,7 @@
   border: 2px solid $form-border-blue;
   border-radius: 8px;
   max-width: 378px;
+  width: 100%;
   margin: auto;
   svg {
     width: 15px;
@@ -12,4 +13,19 @@
   .css-1okebmr-indicatorSeparator {
     display: none;
   }
+  .css-st071y-menu {
+    font-weight: 500;
+    font-size: 1rem;
+    color: $primary-blue;
+  }
+  .css-1wa3eu0-placeholder {
+    font-weight: 500;
+    font-size: 1rem;
+    color: $secondary-blue;
+  }
+}
+.options {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
