@@ -1,0 +1,11 @@
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $primary-blue;
+  width: 100vw;
+  height: 100vh;
+  svg {
+    animation: spin 3s linear infinite;
+  }
+}
