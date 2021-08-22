@@ -26,6 +26,14 @@
   }
 }
 
+.btn-group {
+  display: flex;
+  gap: 10px;
+  .btn {
+    width: 260px;
+  }
+}
+
 @include media("<=phone2x") {
   .btn {
     &--primary {

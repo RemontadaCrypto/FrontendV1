@@ -1,0 +1,50 @@
+.seller-escrow {
+  color: $primary-blue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  header {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: 35px;
+  }
+  h3 {
+    font-weight: bold;
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+  }
+  h4 {
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  &__cards {
+    display: flex;
+    gap: 20px;
+  }
+
+  &__prices {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    white-space: nowrap;
+    width: 60%;
+    margin-top: 40px;
+    margin-bottom: 50px;
+  }
+
+  .flex-ac {
+    gap: 10px;
+    margin-bottom: 40px;
+    a {
+      text-decoration: underline;
+    }
+  }
+
+  .info {
+    margin-bottom: 50px;
+  }
+  .btn-group {
+    gap: 20px;
+  }
+}
