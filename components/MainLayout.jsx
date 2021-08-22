@@ -7,6 +7,10 @@ import { RiArrowLeftLine } from "react-icons/ri";
 
 const MainLayout = ({ children, text, url }) => {
     const router = useRouter()
+    const handleRouter = () => {
+        url ? router.push(`/${url}`) : router.back()
+    }
+
     return (
         <motion.section
             initial={{ opacity: 0 }}
@@ -18,16 +22,12 @@ const MainLayout = ({ children, text, url }) => {
                         <Image src="/logo.svg" width={176} height={32} />
                     </a>
                 </Link>
-                {text &&
-                    <Link href={url}>
-                        <a>{text}</a>
-                    </Link>}
             </header>
             <section className="layout__child">
                 <nav className="layout__child__nav">
-                    <span role="button" onClick={() => router.back()}>
-                        <RiArrowLeftLine />Back
-                </span>
+                    <span role="button" onClick={handleRouter}>
+                        <RiArrowLeftLine />Back {text && `to ${text}`}
+                    </span>
                 </nav>
                 <section className="layout__child__main flex-ac-jc">
                     {children}
