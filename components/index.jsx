@@ -6,5 +6,6 @@ import Button from "./Button"
 import Modal from "./Modal"
 import Loading from "./Loading"
 import InputSelect from "./InputSelect"
+import BuyerCard from "./BuyerCard"
 
-export { Layout, MainLayout, Button, Loading, InputSelect, Input, Info, Modal }
+export { Layout, MainLayout, Button, Loading, InputSelect, Input, Info, Modal, BuyerCard }
