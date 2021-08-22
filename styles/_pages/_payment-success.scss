@@ -1,0 +1,14 @@
+.seller-escrow {
+  &.complete {
+    & > p {
+      max-width: 470px;
+      width: 90%;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .seller-escrow__cards {
+      margin-bottom: 40px;
+    }
+  }
+}

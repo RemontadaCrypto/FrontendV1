@@ -1,7 +1,9 @@
 import React from 'react'
+import { useRouter } from "next/router"
 import { Card, Info, Button } from "../../components"
 
 const SellerEscrow = () => {
+    const router = useRouter()
     const cards = [
         {
             tab: "Stage 1", title: "Coin in escrow", info: "Waiting for seller to approve trade offer request", time: "1hr 45minutes", active: true
@@ -55,7 +57,7 @@ const SellerEscrow = () => {
 
             <div className="btn-group">
                 <Button onClick={() => { console.log("clicked") }} text="Report Buyer" btnClass="btn btn--secondary" />
-                <Button onClick={() => { console.log("clicked") }} text="Confirm payment" btnClass="btn btn--primary" />
+                <Button onClick={() => { router.push("/payment-success") }} text="Confirm payment" btnClass="btn btn--primary" />
             </div>
         </section>
     )
