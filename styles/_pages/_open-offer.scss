@@ -1,0 +1,33 @@
+.open-offer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: $primary-blue;
+
+  h3 {
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+  }
+  p {
+    gap: 5px;
+    display: flex;
+    align-items: center;
+    a {
+      text-decoration: underline;
+    }
+  }
+  .create-offer__trades {
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+
+  .info {
+    margin-bottom: 50px;
+    margin-top: 15px;
+  }
+
+  .flex-ac {
+    gap: 20px;
+  }
+}

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Link from "next/link"
 import { InputSelect, BuyerCard } from "../../components"
 
 const OfferListings = () => {
@@ -154,16 +155,19 @@ const OfferListings = () => {
 
             <section className="offer-listings__card">
                 {offerCards.map((card, index) => (
-                    <BuyerCard
-                        key={index}
-                        user={card.user}
-                        coin={card.coin}
-                        worth={card.worth}
-                        username={card.username}
-                        completed={card.completed}
-                        price={card.price}
-                        tradetype={card.tradetype}
-                        limits={card.limits} />
+                    <Link key={index} href={`/offer-listings/${index}`}>
+                        <a>
+                            <BuyerCard
+                                user={card.user}
+                                coin={card.coin}
+                                worth={card.worth}
+                                username={card.username}
+                                completed={card.completed}
+                                price={card.price}
+                                tradetype={card.tradetype}
+                                limits={card.limits} />
+                        </a>
+                    </Link>
                 ))}
             </section>
         </section>

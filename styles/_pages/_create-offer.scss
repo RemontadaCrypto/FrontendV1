@@ -32,19 +32,38 @@
     }
   }
 
-  &__trades {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 35px;
-
-    max-width: 782px;
-    width: 100%;
-    height: 150px;
-    background: $primary-blue;
-    border-radius: 8px;
+  .info {
+    margin: 50px auto;
   }
+
+  .btn {
+    width: 226px;
+  }
+
+  .modal {
+    &__child {
+      h3 {
+        margin: auto;
+      }
+      svg {
+        margin: 50px auto;
+      }
+    }
+  }
+}
+
+.create-offer__trades {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 35px;
+
+  max-width: 782px;
+  width: 100%;
+  height: 150px;
+  background: $primary-blue;
+  border-radius: 8px;
 
   .trades {
     width: 100%;
@@ -82,24 +101,6 @@
       span {
         font-weight: bold;
         color: $primary-blue;
-      }
-    }
-  }
-
-  .info {
-    margin: 50px auto;
-  }
-
-  .btn {
-    width: 226px;
-  }
-  .modal {
-    &__child {
-      h3 {
-        margin: auto;
-      }
-      svg {
-        margin: 50px auto;
       }
     }
   }
