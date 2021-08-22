@@ -1,11 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useRouter } from "next/router"
-import { Button, Info } from "../../components"
+import { AnimatePresence } from "framer-motion"
+import { Button, Info, Modal } from "../../components"
 
 const OpenOffer = () => {
     const router = useRouter()
+    const [open, setOpen] = useState(false)
+    const handleClose = () => {
+        setOpen(false)
+    }
     const infoArray = [
         "Please click on message link above to say hello and handle transactions information with buyer"
+    ]
+
+    const modalArray = [
+        "Please note that if a trade offer is not accepted within two(2) hours of initiation, the trade will be cancelled.", "Please click on message link above to say hello and handle transactions information with buyer"
     ]
 
     return (
@@ -45,7 +54,44 @@ const OpenOffer = () => {
 
             <Info array={infoArray} />
 
-            <Button onClick={() => { router.push("/payment-success") }} text="Primary" btnClass="btn btn--primary" />
+            <Button onClick={() => { setOpen(true) }} text="Primary" btnClass="btn btn--primary" />
+
+            <AnimatePresence>
+                {open &&
+                    <Modal handleClose={handleClose}>
+                        <h3>Confirm Trade</h3>
+                        <h4>Trade details</h4>
+
+                        <div className="detail-table">
+                            <div className="detail-table__item">
+                                <strong>You will pay</strong>
+                                <span>₦ 50,000</span>
+                            </div>
+                            <div className="detail-table__item">
+                                <strong>Seller will transfer</strong>
+                                <span>0.000023 <strong>BTC</strong></span>
+                            </div>
+                            <div className="detail-table__item">
+                                <strong>Escrow fee</strong>
+                                <span>0.000003 <strong>BTC</strong></span>
+                            </div>
+                            <div className="detail-table__item">
+                                <strong>You will Receive</strong>
+                                <span>0.000021 <strong>BTC</strong></span>
+                            </div>
+                        </div>
+                        <p>
+                            <strong>Send seller a message here</strong>
+                            <a href="">wkgfksialhishcichjcqaigu</a>
+                        </p>
+                        <Info array={modalArray} />
+                        <div className="btn-group">
+                            <Button onClick={handleClose} text="Cancel" btnClass="btn btn--secondary" />
+                            <Button onClick={() => { router.push("/pending") }} text="Confirm Trade" btnClass="btn btn--primary" />
+                        </div>
+                    </Modal>
+                }
+            </AnimatePresence>
         </section>
     )
 }
