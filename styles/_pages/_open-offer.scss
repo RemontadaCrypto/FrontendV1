@@ -30,18 +30,6 @@
       width: unset;
       margin: unset;
     }
-
-    .detail-table {
-      margin-bottom: 50px;
-      margin-top: 30px;
-      display: grid;
-      grid-row-gap: 30px;
-      &__item {
-        grid-gap: 18vw;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-      }
-    }
   }
 
   .info {
@@ -52,5 +40,17 @@
 
   .flex-ac {
     gap: 20px;
+  }
+}
+
+.detail-table {
+  margin-bottom: 50px;
+  margin-top: 30px;
+  display: grid;
+  grid-row-gap: 30px;
+  &__item {
+    grid-gap: 18vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 }

@@ -31,6 +31,11 @@
         padding: 80px 70px;
       }
     }
+    &.lg {
+      .layout__child {
+        max-width: 1030px;
+      }
+    }
   }
 }
 

@@ -17,10 +17,6 @@
     font-weight: bold;
     font-size: 1rem;
   }
-  &__cards {
-    display: flex;
-    gap: 20px;
-  }
 
   &__prices {
     display: flex;
@@ -47,4 +43,9 @@
   .btn-group {
     gap: 20px;
   }
+}
+
+.seller-escrow__cards {
+  display: flex;
+  gap: 20px;
 }

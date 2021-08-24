@@ -5,7 +5,7 @@ import { useRouter } from "next/router"
 import { motion } from "framer-motion"
 import { RiArrowLeftLine } from "react-icons/ri";
 
-const MainLayout = ({ children, text, url }) => {
+const MainLayout = ({ children, text, url, lg }) => {
     const router = useRouter()
     const handleRouter = () => {
         url ? router.push(`/${url}`) : router.back()
@@ -15,7 +15,7 @@ const MainLayout = ({ children, text, url }) => {
         <motion.section
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, transition: { duration: 0.2, type: "tween" } }}
-            className="layout main">
+            className={lg ? "lg layout main" : "layout main"}>
             <header className="flex-ac-jb">
                 <Link href="/">
                     <a>

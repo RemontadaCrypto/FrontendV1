@@ -87,7 +87,7 @@ const OpenOffer = () => {
                         <Info array={modalArray} />
                         <div className="btn-group">
                             <Button onClick={handleClose} text="Cancel" btnClass="btn btn--secondary" />
-                            <Button onClick={() => { router.push("/pending") }} text="Confirm Trade" btnClass="btn btn--primary" />
+                            <Button onClick={() => { router.push("/pending-approval") }} text="Confirm Trade" btnClass="btn btn--primary" />
                         </div>
                     </Modal>
                 }
