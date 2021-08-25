@@ -38,3 +38,37 @@
     }
   }
 }
+
+@include media("<=phone3x") {
+  .modal {
+    &__main {
+      padding: 60px 50px;
+    }
+    &__child {
+      p {
+        font-size: 1.5rem;
+        width: 80%;
+      }
+    }
+  }
+}
+
+@include media("<=phone2x") {
+  .modal {
+    &__main {
+      padding: 60px 30px;
+    }
+    [role="button"] {
+      position: absolute;
+      top: 25px;
+      right: 25px;
+    }
+    &__child {
+      p {
+        font-size: 1.25rem;
+        width: 100%;
+        margin-bottom: 30px;
+      }
+    }
+  }
+}

@@ -1,5 +1,5 @@
 .card {
-  width: 304px;
+  min-width: 304px;
   height: 241px;
   background: $light-blue;
   color: $primary-blue;
@@ -30,5 +30,11 @@
   h2 {
     font-weight: bold;
     font-size: 1.25rem;
+  }
+}
+
+@include media("<=phone2x") {
+  .card {
+    min-width: unset;
   }
 }

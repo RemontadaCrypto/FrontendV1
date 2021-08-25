@@ -42,5 +42,36 @@
     margin: auto;
     background: $white;
     border-radius: 16px;
+
+    a {
+      width: 100%;
+      .buyer-card {
+        margin: auto;
+      }
+    }
+  }
+}
+
+@include media("<=phone3x") {
+  .offer-listings {
+    &__filters {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}
+
+@include media("<=phone2x") {
+  .offer-listings {
+    &__filters {
+      grid-template-columns: 1fr;
+      .filter {
+        label {
+          margin-bottom: 10px;
+        }
+      }
+    }
+    &__card {
+      padding: 50px 30px;
+    }
   }
 }

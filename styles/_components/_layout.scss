@@ -13,7 +13,7 @@
   &.main {
     .layout__child {
       max-width: 982px;
-      width: 90%;
+      width: 100%;
       margin: auto;
       &__nav {
         margin-bottom: 20px;
@@ -34,6 +34,9 @@
     &.lg {
       .layout__child {
         max-width: 1030px;
+        &__main {
+          padding: 80px 30px;
+        }
       }
     }
   }
@@ -48,6 +51,17 @@
     &.main {
       .layout__child {
         width: 100%;
+        &__main {
+          padding: 50px 20px;
+        }
+      }
+      &.lg {
+        .layout__child {
+          width: 100%;
+          &__main {
+            padding: 50px 20px;
+          }
+        }
       }
     }
   }

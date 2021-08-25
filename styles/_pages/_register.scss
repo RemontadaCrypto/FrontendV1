@@ -39,11 +39,28 @@
     .btn {
       width: 79px;
       height: 56px;
+      padding: 0 7px;
       background: $dark-blue;
       border-radius: 8px;
     }
   }
   .btn--primary {
     width: 226px;
+  }
+}
+
+@include media("<=phone2x") {
+  .register {
+    h2 {
+      margin-bottom: 20px;
+    }
+    & > p {
+      width: 100%;
+      font-size: 1.125rem;
+    }
+    h3 {
+      margin-top: 30px;
+      margin-bottom: 20px;
+    }
   }
 }

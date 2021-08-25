@@ -57,3 +57,54 @@
     }
   }
 }
+
+@include media("<=920px") {
+  .buyer-card {
+    &__left {
+      width: 100%;
+      gap: 20px;
+    }
+
+    &__right {
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+      .flex-ac {
+        flex-wrap: wrap;
+      }
+    }
+  }
+}
+
+@include media("<=540px") {
+  .buyer-card {
+    &__left {
+      .section {
+        h4 {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    &__right {
+      flex-wrap: wrap;
+    }
+
+    .modal__child {
+      p {
+        width: 100%;
+        margin: 35px 0;
+      }
+    }
+  }
+}
+
+@include media("<=phone2x") {
+  .buyer-card {
+    .modal__child {
+      p {
+        margin: 20px 0;
+      }
+    }
+  }
+}
