@@ -33,16 +33,16 @@ const SellerEscrow = () => {
                 ))}
             </div>
 
-            <div className="seller-escrow__prices">
-                <div className="flex-ac-jb">
+            <div className="detail-table">
+                <div className="detail-table__item">
                     <h4>Amount in escrow</h4>
                     <p>0.000153 <strong>BTC</strong></p>
                 </div>
-                <div className="flex-ac-jb">
+                <div className="detail-table__item">
                     <h4>Escrow fee</h4>
                     <p>0.000153 <strong>BTC</strong></p>
                 </div>
-                <div className="flex-ac-jb">
+                <div className="detail-table__item">
                     <h4>You will recieve</h4>
                     <p>₦ 50,000</p>
                 </div>

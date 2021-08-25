@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useRouter } from "next/router"
-import { AnimatePresence } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 import { Button, Info, Modal } from "../../components"
 
 const OpenOffer = () => {
@@ -18,7 +18,10 @@ const OpenOffer = () => {
     ]
 
     return (
-        <section className="open-offer">
+        <motion.section
+            initial={{ y: 300 }}
+            animate={{ y: 0 }}
+            transition={{ type: "tween" }} className="open-offer">
             <h3>Trade #mnxhs921</h3>
             <div className="flex-ac">
                 <p>
@@ -92,7 +95,7 @@ const OpenOffer = () => {
                     </Modal>
                 }
             </AnimatePresence>
-        </section>
+        </motion.section>
     )
 }
 

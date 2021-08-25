@@ -5,6 +5,7 @@ import { Input, Button } from "../../components"
 
 const SignupForm = () => {
     const router = useRouter()
+    const [buyer, setBuyer] = useState(true)
     const [form, setForm] = useState({ email: "", password: "" })
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value })
@@ -12,7 +13,7 @@ const SignupForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        router.push("/register")
+        buyer ? router.push("/offer-listings") : router.push("/register")
     }
 
     return (

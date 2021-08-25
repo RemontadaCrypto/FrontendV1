@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
+import { useRouter } from "next/router"
 import { AnimatePresence } from "framer-motion"
 import { Button, Modal } from "./index"
 
-const BuyerCard = ({ user, coin, worth, username, completed, price, tradetype, limits }) => {
+const BuyerCard = ({ url, user, coin, worth, username, completed, price, tradetype, limits }) => {
+    const router = useRouter()
     const [open, setOpen] = useState(false)
+    const [buyer, setBuyer] = useState(false)
     const handleClose = () => {
         setOpen(false)
     }
@@ -26,7 +29,7 @@ const BuyerCard = ({ user, coin, worth, username, completed, price, tradetype, l
                     <h4>Trade limits : </h4>
                     <p>{limits}</p>
                 </div>
-                <Button onClick={() => { setOpen(true) }} text="Buy" btnClass="btn btn--primary" />
+                <Button onClick={() => { buyer ? router.push(url) : setOpen(true) }} text="Buy" btnClass="btn btn--primary" />
             </div>
 
             <AnimatePresence>
@@ -37,7 +40,7 @@ const BuyerCard = ({ user, coin, worth, username, completed, price, tradetype, l
                         <p>You have a new trade request from <strong>{user}</strong> to buy <strong>{worth}</strong> worth of <strong>{coin}</strong></p>
                         <div className="btn-group">
                             <Button onClick={handleClose} text="Decline Offer" btnClass="btn btn--secondary" />
-                            <Button onClick={() => { console.log("clicked") }} text="Accept offer" btnClass="btn btn--primary" />
+                            <Button onClick={() => { router.push("/seller-escrow") }} text="Accept offer" btnClass="btn btn--primary" />
                         </div>
                     </Modal>
                 }

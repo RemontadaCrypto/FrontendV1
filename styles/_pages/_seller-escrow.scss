@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
   header {
     font-weight: bold;
     font-size: 1.5rem;
@@ -18,19 +19,15 @@
     font-size: 1rem;
   }
 
-  &__prices {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-
-    white-space: nowrap;
-    width: 60%;
-    margin-top: 40px;
-    margin-bottom: 50px;
+  .detail-table {
+    &__item {
+      grid-gap: 10vw;
+    }
   }
 
   .flex-ac {
     gap: 10px;
+    flex-wrap: wrap;
     margin-bottom: 40px;
     a {
       text-decoration: underline;
@@ -53,7 +50,14 @@
 }
 
 @include media("<=phone2x") {
-  .seller-escrow__cards {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  .seller-escrow {
+    &__cards {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    .detail-table {
+      &__item {
+        grid-gap: 3vw;
+      }
+    }
   }
 }
