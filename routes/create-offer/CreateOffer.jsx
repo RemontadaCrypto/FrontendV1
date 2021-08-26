@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useRouter } from "next/router"
 import { AnimatePresence } from "framer-motion"
-import { Button, InputSelect, Info, Modal } from "../../components"
+import { Button, InputSelect, Info, Modal, TradeCard } from "../../components"
 
 const CreateOffer = () => {
     const [value, setValue] = useState(null)
@@ -34,17 +34,6 @@ const CreateOffer = () => {
         }
     ]
 
-    const card = [
-        {
-            title: "Setup a Naira trade",
-            text: "This option means your trade offer to be displayed in Naira(NGN) and the transactions will be made in Naira."
-        },
-        {
-            title: "Setup a Dollar trade",
-            text: "This option means your trade offer will be displayed in Dollar($) and the transactions will be made in Dollar."
-        }
-    ]
-
     const info = ["Payments will be recieved only through bank transfers.", "Coins will only be released from escrow when payments have beenconfirmed from both parties.", "Transactions will be cancelled within 2 hours if further actionsare not taken on a trade and your coins will return to your walletfrom escrow."]
 
     const handleChange = (selectedOption) => {
@@ -63,12 +52,8 @@ const CreateOffer = () => {
             <h3>Set trade type</h3>
             <p>Set your prices to a specific dollar rate</p>
             <div className="create-offer__cards">
-                {card.map((item, index) => (
-                    <div key={index} className="create-offer__cards__item">
-                        <h4>{item.title}</h4>
-                        <p>{item.text}</p>
-                    </div>
-                ))}
+                <TradeCard />
+                <TradeCard USD />
             </div>
 
             <h3>Set trade volumes</h3>

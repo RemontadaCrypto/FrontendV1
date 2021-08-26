@@ -8,6 +8,7 @@
   h2 {
     font-weight: bold;
     font-size: 2rem;
+    text-align: center;
   }
 
   h3 {
@@ -25,16 +26,6 @@
     width: 100%;
     margin-top: 20px;
     margin-bottom: 40px;
-    &__item {
-      width: 100%;
-      max-width: 378px;
-      min-height: 152px;
-      margin: auto;
-
-      background: $light-blue;
-      border-radius: 8px;
-      padding: 25px;
-    }
   }
 
   .info {
@@ -123,7 +114,7 @@
       }
     }
     &__cards {
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     }
   }
 }

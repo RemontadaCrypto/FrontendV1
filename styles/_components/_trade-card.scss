@@ -1,0 +1,55 @@
+.trade-card {
+  width: 100%;
+  max-width: 378px;
+  min-height: 152px;
+  margin: 0 auto;
+
+  background: $light-blue;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  padding: 25px;
+
+  &:hover,
+  &:active,
+  &:focus,
+  &:focus-within {
+    border-color: $form-border-blue;
+  }
+
+  &__info {
+    p {
+      margin: 20px 0;
+    }
+  }
+
+  &__main {
+    &__input {
+      background: $white;
+      border: 2px solid $form-border-blue;
+      border-radius: 8px;
+
+      width: 100%;
+      height: 56px;
+      padding: 0 15px;
+      margin-top: 10px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      input {
+        background: transparent;
+        height: 100%;
+        width: 100%;
+        outline: transparent;
+        border: transparent;
+      }
+
+      span {
+        font-weight: bold;
+        font-size: 1rem;
+        color: $secondary-blue;
+      }
+    }
+  }
+}
