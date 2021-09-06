@@ -1,19 +1,56 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import toast from "react-hot-toast";
+
 import { Input, Button } from "../../components";
+import axios from "../../axios/axiosInstance";
+
+
 
 const SignupForm = () => {
   const router = useRouter();
-  const [buyer, setBuyer] = useState(true);
   const [form, setForm] = useState({ email: "", username: "", password: "" });
+  const formRef = React.useRef(null);
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+
+  const handleSubmit =  async (e) => {
     e.preventDefault();
-    buyer ? router.push("/offer-listings") : router.push("/register");
+
+       //dismiss all toasts
+      toast.dismiss();
+
+     try {
+       const {email, username, password} = form;
+
+       const body = {
+         name: username,
+         email,
+         password
+       };
+
+      await axios({
+        method: 'post',
+        url: 'auth/register',
+        data: body
+      });
+
+       setForm({ email: '', username: '', password: ''});
+
+       toast.success(
+         'You have been successfully registered. Check your email for confirmation link', {
+          position: 'top-center'
+           });
+    }catch(error) {
+       toast.error(
+         error.message || 'Registeration failed!', {
+          position: 'top-center'
+         });
+    }
   };
 
   return (
@@ -23,7 +60,7 @@ const SignupForm = () => {
         Create an account and start trading cryptocurrencies with very little
         hassles
       </p>
-      <form onSubmit={handleSubmit}>
+      <form ref={formRef} onSubmit={handleSubmit}>
         <Input
           name='email'
           onChange={handleChange}
