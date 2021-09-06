@@ -19,7 +19,7 @@ const SigninForm = () => {
 
   React.useEffect(() => {
     if (user.isAuth) {
-      router.push("/seller-escrow");
+      router.push("/offer-listings");
     }
   }, [user.isAuth]);
 
