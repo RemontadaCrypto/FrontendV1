@@ -8,10 +8,10 @@ function MyApp({ Component, pageProps }) {
       reverseOrder={false}
       gutter={8}
       toastOptions={{
-        duration: Infinity,
+        duration: 8000,
         style: {
           fontSize: 18,
-          marginTop: '20px',
+          marginTop: '40px',
         }
       }} />
   </>
