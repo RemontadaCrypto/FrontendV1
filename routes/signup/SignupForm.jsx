@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import toast from "react-hot-toast";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 import { Input, Button } from "../../components";
 import axios from "../../axios/axiosInstance";
 
-
-
 const SignupForm = () => {
-  const router = useRouter();
+  const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({ email: "", username: "", password: "" });
   const formRef = React.useRef(null);
 
@@ -17,44 +15,48 @@ const SignupForm = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-
-  const handleSubmit =  async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-       //dismiss all toasts
-      toast.dismiss();
+    //dismiss all toasts
+    toast.dismiss();
 
-     try {
-       const {email, username, password} = form;
+    setLoading(true);
 
-       const body = {
-         name: username,
-         email,
-         password
-       };
+    try {
+      const { email, username, password } = form;
+
+      const body = {
+        name: username,
+        email,
+        password,
+      };
 
       await axios({
-        method: 'post',
-        url: 'auth/register',
-        data: body
+        method: "post",
+        url: "auth/register",
+        data: body,
       });
 
-       setForm({ email: '', username: '', password: ''});
+      setForm({ email: "", username: "", password: "" });
+      setLoading(false);
 
-       toast.success(
-         'You have been successfully registered. Check your email for confirmation link', {
-          position: 'top-center'
-           });
-    }catch(error) {
-       toast.error(
-         error.message || 'Registeration failed!', {
-          position: 'top-center'
-         });
+      toast.success(
+        "You have been successfully registered. Log into your account",
+        {
+          position: "top-center",
+        }
+      );
+    } catch (error) {
+      setLoading(false);
+      toast.error(error.message || "Registeration failed!", {
+        position: "top-center",
+      });
     }
   };
 
   return (
-    <section className='signup'>
+    <section className="signup">
       <h3>Create new account</h3>
       <p>
         Create an account and start trading cryptocurrencies with very little
@@ -62,33 +64,48 @@ const SignupForm = () => {
       </p>
       <form ref={formRef} onSubmit={handleSubmit}>
         <Input
-          name='email'
+          name="email"
           onChange={handleChange}
-          label='Email address'
-          placeholder='Input email here'
+          label="Email address"
+          placeholder="Input email here"
           value={form.email}
         />
         <Input
-          name='username'
+          name="username"
           onChange={handleChange}
-          label='Username'
-          placeholder='Input username here'
+          label="Username"
+          placeholder="Input username here"
           value={form.username}
         />
         <Input
-          type='password'
-          name='password'
+          type="password"
+          name="password"
           onChange={handleChange}
-          label='Set your password'
+          label="Set your password"
           value={form.password}
         />
-        <div className='form-button'>
-          <Button text='Register' type='submit' btnClass='btn btn--primary' />
+        <div className="form-button">
+          <Button
+            text="Register"
+            type="submit"
+            btnClass="btn btn--primary"
+            clicked={loading}
+            style={{ opacity: loading ? 0.5 : 1 }}
+            icon={
+              loading && (
+                <AiOutlineLoading3Quarters
+                  style={{
+                    marginLeft: 10,
+                  }}
+                />
+              )
+            }
+          />
         </div>
       </form>
       <footer>
         Already have an account?{" "}
-        <Link href='/signin'>
+        <Link href="/signin">
           <a>Login here</a>
         </Link>{" "}
       </footer>
