@@ -22,6 +22,7 @@ const Input = ({
                         placeholder={placeholder}
                         value={value}
                         disabled={disabled && disabled}
+                        required={true}
                         onChange={onChange}
                     />
                 </div> :
@@ -30,6 +31,7 @@ const Input = ({
                         type={password ? "password" : "text"}
                         name={name && name}
                         value={value}
+                        required={true}
                         disabled={disabled && disabled}
                         onChange={onChange}
                     />
