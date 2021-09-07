@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
+import ReactPaginate from "react-paginate";
 
 import axios from "../../axios/axiosInstance";
-import { InputSelect, BuyerCard } from "../../components";
+import { InputSelect, Button } from "../../components";
 import Spinner from "../../components/Spinner";
 
 // FILTER ARRAYS
@@ -91,64 +92,45 @@ const tradeArray = [
   },
 ];
 
-// BUYER CARD
-const offerCards = [
-  {
-    user: "Gabi0987654321",
-    coin: "BTC",
-    worth: "₦50,000",
-    username: "Username",
-    completed: 20,
-    price: "₦18,848,550/BTC",
-    tradetype: "Naira trade",
-    limits: "₦50,000 - ₦ 1,000,000",
-  },
-  {
-    user: "Gabi0987654321",
-    coin: "BTC",
-    worth: "₦50,000",
-    username: "Username",
-    completed: 20,
-    price: "₦18,848,550/BTC",
-    tradetype: "Naira trade",
-    limits: "₦50,000 - ₦ 1,000,000",
-  },
-  {
-    user: "Gabi0987654321",
-    coin: "BTC",
-    worth: "₦50,000",
-    username: "Username",
-    completed: 20,
-    price: "₦18,848,550/BTC",
-    tradetype: "Naira trade",
-    limits: "₦50,000 - ₦ 1,000,000",
-  },
-  {
-    user: "Gabi0987654321",
-    coin: "BTC",
-    worth: "₦50,000",
-    username: "Username",
-    completed: 20,
-    price: "₦18,848,550/BTC",
-    tradetype: "Naira trade",
-    limits: "₦50,000 - ₦ 1,000,000",
-  },
-  {
-    user: "Gabi0987654321",
-    coin: "BTC",
-    worth: "₦50,000",
-    username: "Username",
-    completed: 20,
-    price: "₦18,848,550/BTC",
-    tradetype: "Naira trade",
-    limits: "₦50,000 - ₦ 1,000,000",
-  },
-];
+const OffersCard = ({ offers }) => {
+  return offers.map((data, index) => {
+    return (
+      <section className="buyer-card" key={index + data.id}>
+        <div className="buyer-card__left">
+          <div className="section">
+            <h4>{data.user.name}</h4>
+            {/* <p>{completed} trades completed</p> */}
+          </div>
+
+          <div className="section">
+            <h4>
+              ₦ {data.coin.price?.toLocaleString()}/{data.coin.short_name}
+            </h4>
+            <p>{data.type}</p>
+          </div>
+        </div>
+        <div className="buyer-card__right">
+          <div className="flex-ac">
+            <h4>Trade limits : </h4>
+            <p>
+              $ {data.min?.toLocaleString()} - $ {data.max?.toLocaleString()}
+            </p>
+          </div>
+          <Button text="Buy" btnClass="btn btn--primary" />
+        </div>
+      </section>
+    );
+  });
+};
+
+const LIMIT = 6;
 
 const OfferListings = () => {
   const token = useSelector((state) => state.user.token);
   const [loading, setLoading] = React.useState(false);
   const [offers, setOffers] = React.useState(null);
+  const [page, setPage] = React.useState(0);
+  const [meta, setMeta] = React.useState(null);
 
   // FILTER STATES
   const [coinValue, setCoinValue] = useState(null);
@@ -157,7 +139,7 @@ const OfferListings = () => {
 
   React.useEffect(() => {
     getAllOffers();
-  }, []);
+  }, [page]);
 
   const getAllOffers = async () => {
     //dismiss all toasts
@@ -168,10 +150,11 @@ const OfferListings = () => {
     try {
       const request = await axios({
         method: "get",
-        url: "/offers",
+        url: `/offers?limit=${LIMIT}&offset=${page}`,
         headers: { Authorization: `Bearer ${token}` },
       });
       setOffers(request.data.data);
+      setMeta(request.data.meta);
       setLoading(false);
     } catch (error) {
       setLoading(false);
@@ -188,8 +171,6 @@ const OfferListings = () => {
       }
     }
   };
-
-  console.log(offers);
 
   // FILTER FUNCTIONS
   const handleCoin = (selectedOption) => {
@@ -248,24 +229,49 @@ const OfferListings = () => {
           <p>There are no offers</p>
         </div>
       )}
-      {offers?.length > 0 && !loading && (
-        <section className="offer-listings__card">
-          {offerCards.map((card, index) => (
-            <BuyerCard
-              key={index}
-              url={`/offer-listings/${index}`}
-              user={card.user}
-              coin={card.coin}
-              worth={card.worth}
-              username={card.username}
-              completed={card.completed}
-              price={card.price}
-              tradetype={card.tradetype}
-              limits={card.limits}
-            />
-          ))}
-        </section>
-      )}
+
+      <section
+        style={{
+          opacity: offers?.length > 0 && !loading ? 1 : 0,
+          visibility: offers?.length > 0 && !loading ? "visible" : "hidden",
+        }}
+        className="offer-listings__card"
+      >
+        {offers?.length > 0 && !loading && (
+          <>
+            <OffersCard offers={offers} />
+          </>
+        )}
+        <div
+          style={{
+            opacity: offers?.length > 0 && !loading ? 1 : 0,
+            visibility: offers?.length > 0 && !loading ? "visible" : "hidden",
+          }}
+        >
+          <ReactPaginate
+            containerClassName="pagination"
+            activeClassName="pagination-active"
+            pageCount={
+              meta
+                ? Math.floor(meta.total / LIMIT)
+                : Math.floor(meta.total / 50)
+            }
+            pageRangeDisplayed={5}
+            initialPage={0}
+            forcePage={page === 0 ? 0 : page - 1}
+            onPageChange={function (pageNumber) {
+              const { selected } = pageNumber;
+              if (selected > 0) {
+                setPage(selected + 1);
+              }
+
+              if (selected === 0) {
+                setPage(0);
+              }
+            }}
+          />
+        </div>
+      </section>
     </section>
   );
 };
