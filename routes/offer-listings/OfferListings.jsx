@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ReactPaginate from "react-paginate";
 
 import axios from "../../axios/axiosInstance";
 import { InputSelect, Button } from "../../components";
 import Spinner from "../../components/Spinner";
+import { selectOffer } from "../../redux/actions/selected-offer.action";
 
 // FILTER ARRAYS
 const coinArray = [
@@ -93,6 +94,8 @@ const tradeArray = [
 ];
 
 const OffersCard = ({ offers }) => {
+  const dispatch = useDispatch();
+
   return offers.map((data, index) => {
     return (
       <section className="buyer-card" key={index + data.id}>
@@ -116,7 +119,13 @@ const OffersCard = ({ offers }) => {
               $ {data.min?.toLocaleString()} - $ {data.max?.toLocaleString()}
             </p>
           </div>
-          <Button text="Buy" btnClass="btn btn--primary" />
+          <Button
+            text="Buy"
+            btnClass="btn btn--primary"
+            onClick={() => {
+              dispatch(selectOffer(data));
+            }}
+          />
         </div>
       </section>
     );
@@ -130,6 +139,7 @@ const OfferListings = () => {
   const [loading, setLoading] = React.useState(false);
   const [offers, setOffers] = React.useState(null);
   const [page, setPage] = React.useState(0);
+  const [offset, setOffset] = React.useState(0);
   const [meta, setMeta] = React.useState(null);
 
   // FILTER STATES
@@ -150,7 +160,7 @@ const OfferListings = () => {
     try {
       const request = await axios({
         method: "get",
-        url: `/offers?limit=${LIMIT}&offset=${page}`,
+        url: `/offers?limit=${LIMIT}&offset=${offset}`,
         headers: { Authorization: `Bearer ${token}` },
       });
       setOffers(request.data.data);
@@ -259,12 +269,15 @@ const OfferListings = () => {
             forcePage={page === 0 ? 0 : page - 1}
             onPageChange={function (pageNumber) {
               const { selected } = pageNumber;
+
               if (selected > 0) {
                 setPage(selected + 1);
+                setOffset((selected + 1 - 1) * LIMIT);
               }
 
               if (selected === 0) {
                 setPage(0);
+                setOffset(0);
               }
             }}
           />
