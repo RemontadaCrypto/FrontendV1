@@ -252,9 +252,7 @@ const OfferListings = () => {
             containerClassName="pagination"
             activeClassName="pagination-active"
             pageCount={
-              meta
-                ? Math.floor(meta.total / LIMIT)
-                : Math.floor(meta.total / 50)
+              meta ? Math.floor(meta.total / LIMIT) : Math.floor(50 / LIMIT)
             }
             pageRangeDisplayed={5}
             initialPage={0}
