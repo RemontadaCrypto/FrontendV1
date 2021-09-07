@@ -3,17 +3,17 @@ import dynamic from "next/dynamic";
 import { Loading } from "../../components";
 
 const DynamicComponent = dynamic(() => import("../../routes/offer-listings"), {
-    loading: () => <Loading />,
+  loading: () => <Loading />,
 });
 
 export default function Register() {
-    return (
-        <>
-            <Head>
-                <title>Remontada | Offer Listings</title>
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-            <DynamicComponent />
-        </>
-    );
+  return (
+    <>
+      <Head>
+        <title>Remontada | Offer Listings</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <DynamicComponent />
+    </>
+  );
 }

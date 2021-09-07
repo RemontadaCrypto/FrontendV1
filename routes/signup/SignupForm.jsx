@@ -43,13 +43,12 @@ const SignupForm = () => {
 
       toast.success(
         "You have been successfully registered. Log into your account",
-        {
-          position: "top-center",
-        }
+        { duration: 6000, position: "top-center" }
       );
     } catch (error) {
       setLoading(false);
       toast.error(error.message || "Registeration failed!", {
+        duration: 6000,
         position: "top-center",
       });
     }

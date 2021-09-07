@@ -1,12 +1,26 @@
+import React from 'react';
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react';
 import { Toaster } from 'react-hot-toast';
-
+import { useRouter } from 'next/router';
 import { store, persistor } from '../redux/store';
-
 import '../styles/index.scss';
 
+
 function MyApp({ Component, pageProps }) {
+  const state = store.getState();
+  const router = useRouter();
+
+  React.useEffect(() => {
+    //Redirect to signin page when not authorized
+    if (state.user.isAuth === false &&
+      router.pathname !== '/signup' &&
+      router.pathname !== '/signin') {
+      console.log('redirecting')
+      router.push('/signin')
+    }
+  }, [state.user.isAuth]);
+
   return (
     <>
       <Provider store={store}>
@@ -16,10 +30,16 @@ function MyApp({ Component, pageProps }) {
             reverseOrder={false}
             gutter={8}
             toastOptions={{
-              duration: 8000,
+              duration: Infinity,
+              position: "top-right",
               style: {
-                fontSize: 18,
-                marginTop: '40px',
+                marginTop: 10,
+              },
+              error: {
+                style: {
+                  backgroundColor: "red",
+                  color: "white",
+                },
               }
             }} />
         </PersistGate>
