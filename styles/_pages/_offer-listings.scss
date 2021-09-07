@@ -43,6 +43,33 @@
     background: $white;
     border-radius: 16px;
   }
+
+  .pagination {
+    display: flex;
+    margin-top: 30px;
+
+    @media (max-width: 555px) {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    li {
+      padding: 4px 10px;
+
+      @media (max-width: 555px) {
+        padding: 4px 6px;
+      }
+
+      &:hover {
+        opacity: 0.6;
+      }
+    }
+
+    &-active {
+      background-color: #142136;
+      color: white;
+    }
+  }
 }
 
 @include media("<=phone3x") {
