@@ -16,10 +16,16 @@ function MyApp({ Component, pageProps }) {
             reverseOrder={false}
             gutter={8}
             toastOptions={{
-              duration: 8000,
+              duration: Infinity,
+              position: "top-right",
               style: {
-                fontSize: 18,
-                marginTop: '40px',
+                marginTop: 10,
+              },
+              error: {
+                style: {
+                  backgroundColor: "red",
+                  color: "white",
+                },
               }
             }} />
         </PersistGate>
