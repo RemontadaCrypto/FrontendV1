@@ -57,10 +57,8 @@ const SigninForm = () => {
     } catch (error) {
       setLoading(false);
       toast.error(error.message || "Registeration failed!", {
-        position: "top-right",
-        style: {
-          marginTop: 10,
-        },
+        duration: 6000,
+        position: "top-center",
       });
     }
   };
