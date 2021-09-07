@@ -16,7 +16,6 @@ function MyApp({ Component, pageProps }) {
     if (state.user.isAuth === false &&
       router.pathname !== '/signup' &&
       router.pathname !== '/signin') {
-      console.log('redirecting')
       router.push('/signin')
     }
   }, [state.user.isAuth]);
