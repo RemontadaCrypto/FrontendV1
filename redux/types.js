@@ -3,4 +3,9 @@ export const UserType = {
   LOG_OUT: 'LOG_OUT'
 };
 
+export const OfferType = {
+  SELECTED_OFFER: 'SELECTED_OFFER',
+  CLEAR_OFFER: 'CLEAR_OFFER'
+};
+
 
