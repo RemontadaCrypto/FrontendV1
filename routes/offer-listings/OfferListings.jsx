@@ -7,6 +7,7 @@ import axios from "../../axios/axiosInstance";
 import { InputSelect, Button } from "../../components";
 import Spinner from "../../components/Spinner";
 import { selectOffer } from "../../redux/actions/selected-offer.action";
+import { useRouter } from "next/router";
 
 // FILTER ARRAYS
 const coinArray = [
@@ -95,6 +96,7 @@ const tradeArray = [
 
 const OffersCard = ({ offers }) => {
   const dispatch = useDispatch();
+  const router = useRouter();
 
   return offers.map((data, index) => {
     return (
@@ -124,6 +126,7 @@ const OffersCard = ({ offers }) => {
             btnClass="btn btn--primary"
             onClick={() => {
               dispatch(selectOffer(data));
+              router.push("/open-offer");
             }}
           />
         </div>
