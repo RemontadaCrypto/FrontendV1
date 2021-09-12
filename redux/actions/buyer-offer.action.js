@@ -5,8 +5,8 @@ export const setBuyerAmount = (payload) => ({
    payload
 });
 
-export const setBtcAmount = (payload) => ({
-   type: buyerOfferType.SET_BTC_AMOUNT,
+export const setCoinAmount = (payload) => ({
+   type: buyerOfferType.SET_COIN_AMOUNT,
    payload
 });
 
