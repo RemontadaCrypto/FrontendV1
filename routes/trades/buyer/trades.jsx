@@ -86,7 +86,8 @@ const Trade = () => {
         sellerName: data.seller.name,
         coin: data.coin.short_name,
         rate: data.offer.rate,
-        sellerState: data.seller_trade_state,
+        sellerState: 2,
+        // sellerState: data.seller_trade_state,
         currency: _capitalize(data.offer.type),
       };
 
@@ -135,6 +136,48 @@ const Trade = () => {
       dispatch(resetOffer());
       dispatch(clearTradeInfo());
       dispatch(clearSelectedOffer());
+    } catch (error) {
+      setLoading(false);
+
+      if (error.response && error.response.statusText) {
+        toast.error(error.response.statusText, {
+          position: "top-center",
+        });
+      } else {
+        toast.error(error.message, {
+          position: "top-center",
+        });
+      }
+    }
+  };
+
+  const confirmPayment = async () => {
+    //dismiss all toasts
+    toast.dismiss();
+    setLoading(true);
+
+    try {
+      const body = {
+        trade: tradeID,
+      };
+
+      const request = await axios({
+        method: "post",
+        url: `/trades/${tradeID}/confirm-payment`,
+        data: body,
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      setLoading(false);
+
+      const {
+        data: { message },
+      } = request;
+
+      toast.success(message, {
+        position: "top-center",
+      });
+      console.log(request);
     } catch (error) {
       setLoading(false);
 
@@ -207,11 +250,13 @@ const Trade = () => {
 
         <Info array={infoArray} />
         <div className="btn-group">
-          <Button
-            onClick={cancelTrade}
-            text="Cancel trade"
-            btnClass="btn btn--secondary"
-          />
+          {tradeInfo.sellerState <= 1 && (
+            <Button
+              onClick={cancelTrade}
+              text="Cancel trade"
+              btnClass="btn btn--secondary"
+            />
+          )}
           {tradeInfo.sellerState == 0 && (
             <Button
               onClick={() => {
@@ -221,35 +266,45 @@ const Trade = () => {
               btnClass="btn btn--primary"
             />
           )}
-          {tradeInfo.sellerState > 0 && (
+          {tradeInfo.sellerState == 1 && (
             <Button
-              onClick={() => {
-                console.log("clicked");
-              }}
+              onClick={confirmPayment}
               text="Confirm payment"
               btnClass="btn btn--primary"
             />
           )}
         </div>
 
-        {/* ) : (
+        {tradeInfo.sellerState > 1 && (
           <section className="pending-approval__success">
             <h4>Transaction Complete</h4>
             <p>
-              You successfully bought <strong>₦50,000</strong> worth of BTC at a
-              rate of <strong>₦700 per Dollar</strong> from{" "}
-              <strong>User0987654321</strong>
+              You successfully bought{" "}
+              <strong>
+                {isNairaDollar(tradeInfo.currency)}
+                {buyerAmount?.toLocaleString()}
+              </strong>{" "}
+              worth of {tradeInfo.coin} from{" "}
+              <strong>{tradeInfo.sellerName}</strong>
             </p>
 
             <Button
               onClick={() => {
-                console.log("clicked");
+                //dismiss all toasts
+                toast.dismiss();
+                dispatch(resetOffer());
+                dispatch(clearTradeInfo());
+                dispatch(clearSelectedOffer());
+
+                toast.success("Trade closed", {
+                  position: "top-center",
+                });
               }}
               text="Close Trade"
               btnClass="btn btn--primary"
             />
           </section>
-        )} */}
+        )}
       </section>
     </>
   );
