@@ -5,6 +5,6 @@ export const selectOffer = (payload) => ({
    payload
 });
 
-export const clearOffer = () => ({
+export const clearSelectedOffer = () => ({
    type: OfferType.CLEAR_OFFER
 });
