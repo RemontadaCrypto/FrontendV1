@@ -8,4 +8,14 @@ export const OfferType = {
   CLEAR_OFFER: 'CLEAR_OFFER'
 };
 
+export const buyerOfferType = {
+  SET_BUYER_AMOUNT: 'SET_BUYER_AMOUNT',
+  SET_ESCROW_FEE: 'SET_ESCROW_FEE',
+  SET_COIN_AMOUNT: 'SET_COIN_AMOUNT',
+  RESET_OFFER: 'RESET_OFFER'
+}
 
+export const TradeInfoType = {
+  SET_TRADE_INFO: 'SET_TRADE_INFO',
+  CLEAR_TRADE_INFO: 'CLEAR_TRADE_INFO'
+};

@@ -1,8 +1,8 @@
 import Head from "next/head";
 import dynamic from "next/dynamic";
-import { Loading } from "../../components";
+import { Loading } from "../../../components";
 
-const DynamicComponent = dynamic(() => import("../../routes/pending-approval"), {
+const DynamicComponent = dynamic(() => import("../../../routes/trades/buyer"), {
     loading: () => <Loading />,
 });
 

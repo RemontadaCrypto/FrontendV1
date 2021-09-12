@@ -1,139 +1,13 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import ReactPaginate from "react-paginate";
 
 import axios from "../../axios/axiosInstance";
-import { InputSelect, Button } from "../../components";
+import { InputSelect } from "../../components";
 import Spinner from "../../components/Spinner";
-import { selectOffer } from "../../redux/actions/selected-offer.action";
-import { useRouter } from "next/router";
-
-// FILTER ARRAYS
-const coinArray = [
-  {
-    value: "BTC",
-    label: (
-      <div className="options">
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect width="24" height="24" rx="4" fill="#302F2F" />
-        </svg>
-        Bitcoin (BTC)
-      </div>
-    ),
-  },
-  {
-    value: "ETH",
-    label: (
-      <div className="options">
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect width="24" height="24" rx="4" fill="#302F2F" />
-        </svg>
-        Ethereum (ETH)
-      </div>
-    ),
-  },
-  {
-    value: "USDC",
-    label: (
-      <div className="options">
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect width="24" height="24" rx="4" fill="#302F2F" />
-        </svg>
-        USD Coin (USDC)
-      </div>
-    ),
-  },
-];
-
-const filterArray = [
-  {
-    value: "Popularity",
-    label: "Popularity",
-  },
-  {
-    value: "Popularity",
-    label: "Popularity",
-  },
-  {
-    value: "Popularity",
-    label: "Popularity",
-  },
-];
-
-const tradeArray = [
-  {
-    value: "Any",
-    label: "Any",
-  },
-  {
-    value: "Any",
-    label: "Any",
-  },
-  {
-    value: "Any",
-    label: "Any",
-  },
-];
-
-const OffersCard = ({ offers }) => {
-  const dispatch = useDispatch();
-  const router = useRouter();
-
-  return offers.map((data, index) => {
-    return (
-      <section className="buyer-card" key={index + data.id}>
-        <div className="buyer-card__left">
-          <div className="section">
-            <h4>{data.user.name}</h4>
-            {/* <p>{completed} trades completed</p> */}
-          </div>
-
-          <div className="section">
-            <h4>
-              ₦ {data.coin.price?.toLocaleString()}/{data.coin.short_name}
-            </h4>
-            <p>{data.type}</p>
-          </div>
-        </div>
-        <div className="buyer-card__right">
-          <div className="flex-ac">
-            <h4>Trade limits : </h4>
-            <p>
-              $ {data.min?.toLocaleString()} - $ {data.max?.toLocaleString()}
-            </p>
-          </div>
-          <Button
-            text="Buy"
-            btnClass="btn btn--primary"
-            onClick={() => {
-              dispatch(selectOffer(data));
-              router.push("/open-offer");
-            }}
-          />
-        </div>
-      </section>
-    );
-  });
-};
+import OffersCard from "../../components/OffersCard";
+import { coinArray, filterArray, tradeArray } from "./selectOptions";
 
 const LIMIT = 6;
 
@@ -265,7 +139,7 @@ const OfferListings = () => {
             containerClassName="pagination"
             activeClassName="pagination-active"
             pageCount={
-              meta ? Math.floor(meta.total / LIMIT) : Math.floor(50 / LIMIT)
+              meta ? Math.ceil(meta.total / LIMIT) : Math.ceil(50 / LIMIT)
             }
             pageRangeDisplayed={5}
             initialPage={0}
