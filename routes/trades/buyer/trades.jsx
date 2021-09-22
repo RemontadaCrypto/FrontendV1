@@ -86,8 +86,7 @@ const Trade = () => {
         sellerName: data.seller.name,
         coin: data.coin.short_name,
         rate: data.offer.rate,
-        sellerState: 2,
-        // sellerState: data.seller_trade_state,
+        sellerState: data.seller_trade_state,
         currency: _capitalize(data.offer.type),
       };
 
