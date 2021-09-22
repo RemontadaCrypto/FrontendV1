@@ -13,10 +13,8 @@ function MyApp({ Component, pageProps }) {
 
   React.useEffect(() => {
     //Redirect to signin page when not authorized
-    if (state.user.isAuth === false &&
-      router.pathname !== '/signup' &&
-      router.pathname !== '/signin') {
-      router.push('/signin')
+    if (state.user.isAuth === false) {
+      router.push('/signup')
     }
   }, [state.user.isAuth]);
 
