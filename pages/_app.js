@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }) {
     if (state.user.isAuth === false) {
       router.push('/signup')
     }
-  }, [state.user.isAuth]);
+  }, [state.user.isAuth, state.user]);
 
   return (
     <>
