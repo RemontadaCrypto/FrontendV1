@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import toast from "react-hot-toast";
 import { useSelector, useDispatch } from "react-redux";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
-import { loginUser } from "../../redux/actions/user.action";
-import axios from "../../axios/axiosInstance";
+import { loginUser } from "../redux/actions/user.action";
+import axios from "../axios/axiosInstance";
 import { useRouter } from "next/router";
-import { Input, Button } from "../../components";
+import { Input, Button } from ".";
 
 const SigninForm = () => {
   const router = useRouter();
@@ -100,12 +100,6 @@ const SigninForm = () => {
           />
         </div>
       </form>
-      <footer>
-        Do not have an account?{" "}
-        <Link href="/signup">
-          <a>Register here</a>
-        </Link>{" "}
-      </footer>
     </section>
   );
 };

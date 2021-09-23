@@ -2,12 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import dynamic from "next/dynamic";
-import { Loading } from "../../components";
-
-const DynamicComponent = dynamic(() => import("../../routes/signup"), {
-  loading: () => <Loading />,
-});
+import { Layout } from "../components";
+import SignupForm from "../components/SignupForm";
 
 export default function Home() {
   const router = useRouter();
@@ -25,7 +21,9 @@ export default function Home() {
         <title>Remontada | Signup</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <DynamicComponent />
+      <Layout text="Login" url="/signin">
+        <SignupForm />
+      </Layout>
     </>
   );
 }

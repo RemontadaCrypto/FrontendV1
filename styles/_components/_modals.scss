@@ -1,4 +1,4 @@
-.modal {
+.modal_popup {
   background: rgba($primary-blue, 0.5);
   width: 100vw;
   height: 100vh;
@@ -29,12 +29,12 @@
     align-items: center;
     flex-direction: column;
     p {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       line-height: 32px;
       color: $primary-blue;
+      margin: auto;
       margin-bottom: 50px;
       width: 60%;
-      text-align: center;
     }
   }
 }

@@ -3,8 +3,8 @@ import Link from "next/link";
 import toast from "react-hot-toast";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
-import { Input, Button } from "../../components";
-import axios from "../../axios/axiosInstance";
+import { Input, Button } from ".";
+import axios from "../axios/axiosInstance";
 
 const SignupForm = () => {
   const [loading, setLoading] = useState(false);
@@ -102,12 +102,6 @@ const SignupForm = () => {
           />
         </div>
       </form>
-      <footer>
-        Already have an account?{" "}
-        <Link href="/signin">
-          <a>Login here</a>
-        </Link>{" "}
-      </footer>
     </section>
   );
 };

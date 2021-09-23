@@ -3,9 +3,9 @@ import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import _capitalize from "lodash.capitalize";
 
-import { selectOffer } from "../redux/actions/selected-offer.action";
-import Button from "../components/Button";
-import isNairaDollar from "../utils/isNairaDollar";
+import { selectOffer } from "../../redux/actions/selected-offer.action";
+import Button from "../Button";
+import isNairaDollar from "../../utils/isNairaDollar";
 
 const OffersCard = ({ offers }) => {
   const dispatch = useDispatch();

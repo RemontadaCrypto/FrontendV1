@@ -1,0 +1,25 @@
+.header {
+  li {
+    cursor: pointer;
+
+    span:hover {
+      opacity: 0.7;
+    }
+  }
+
+  .register {
+    border-radius: 4px !important;
+    background: #2e774b !important;
+  }
+
+  @media (max-width: 991px) {
+    .navbar-nav {
+      align-items: flex-start !important;
+      margin-top: 20px;
+
+      li:not(:last-child) {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
