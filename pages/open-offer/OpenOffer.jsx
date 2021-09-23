@@ -221,9 +221,13 @@ const OpenOffer = () => {
                   </span>
                 </div>
               </div>
-              <p>
-                <strong>Send seller a message here</strong>
-                <a href="">wkgfksialhishcichjcqaigu</a>
+              <p className="text-center">
+                <strong className="d-block w-100">
+                  Send seller a message here
+                </strong>
+                <a href="" className="d-block w-100">
+                  wkgfksialhishcichjcqaigu
+                </a>
               </p>
               <Info array={modalArray} />
               <div className="btn-group">

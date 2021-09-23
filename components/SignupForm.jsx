@@ -102,12 +102,6 @@ const SignupForm = () => {
           />
         </div>
       </form>
-      <footer>
-        Already have an account?{" "}
-        <Link href="/signin">
-          <a>Login here</a>
-        </Link>{" "}
-      </footer>
     </section>
   );
 };

@@ -19,28 +19,6 @@ const Layout = ({ children, text, url }) => {
       animate={{ opacity: 1, transition: { duration: 0.2, type: "tween" } }}
       className="layout"
     >
-      <header className="flex-ac-jb">
-        <Link href="/">
-          <a>
-            <Image src="/logo.svg" width={176} height={32} />
-          </a>
-        </Link>
-        {text && (
-          <Link href={url}>
-            <a>{text}</a>
-          </Link>
-        )}
-        {isAuth && (
-          <button
-            onClick={() => {
-              dispatch(logOutUser());
-              router.push("/signup");
-            }}
-          >
-            Logout
-          </button>
-        )}
-      </header>
       <section className="layout__child flex-ac-jc">{children}</section>
     </motion.section>
   );
