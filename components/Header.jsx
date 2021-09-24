@@ -100,7 +100,7 @@ const AuthorizedHeader = ({ user }) => {
       })}
       <li className="nav-item dropdown px-4">
         <span
-          className="dropdown-toggle font-weight-bold py-2"
+          className="dropdown-toggle font-weight-bold py-2 text-capitalize"
           id="navbarDropdown"
           role="button"
           data-toggle="dropdown"
