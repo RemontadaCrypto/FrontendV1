@@ -9,7 +9,9 @@
   },
   "dependencies": {
     "axios": "^0.21.3",
+    "formik": "^2.2.9",
     "framer-motion": "^4.1.17",
+    "lodash": "^4.17.21",
     "lodash.capitalize": "^4.2.1",
     "next": "11.1.0",
     "react": "17.0.2",
@@ -22,6 +24,7 @@
     "redux": "^4.1.1",
     "redux-persist": "^6.0.0",
     "sass": "^1.37.5",
-    "swr": "^1.0.0"
+    "swr": "^1.0.0",
+    "yup": "^0.32.9"
   }
 }
