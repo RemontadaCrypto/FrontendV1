@@ -1,11 +1,16 @@
 .signup {
   width: 100%;
   max-width: 580px;
-  height: 664px;
   padding: 70px 80px;
   border-radius: 16px;
   background: $white;
+
+  &-height {
+    height: 730px;
+  }
+
   &.signin {
+    height: 664px;
     p {
       width: 100%;
     }
