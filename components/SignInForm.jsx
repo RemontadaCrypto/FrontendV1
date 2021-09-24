@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import toast from "react-hot-toast";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 import { loginUser } from "../redux/actions/user.action";
@@ -21,7 +21,6 @@ const SigninForm = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
-  const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   const formik = useFormik({
@@ -34,12 +33,6 @@ const SigninForm = () => {
       _handleSubmit(values, resetForm);
     },
   });
-
-  React.useEffect(() => {
-    if (user.isAuth) {
-      router.push("/offer-listings");
-    }
-  }, [user.isAuth]);
 
   const _handleSubmit = async (values, resetForm) => {
     //dismiss all toasts
@@ -58,6 +51,7 @@ const SigninForm = () => {
 
       if (request.status === 200) {
         dispatch(loginUser(request.data.data, request.data.access_token));
+        router.push("/offer-listings");
         resetForm();
       }
     } catch (e) {
