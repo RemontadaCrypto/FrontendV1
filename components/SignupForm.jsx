@@ -3,11 +3,14 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import toast from "react-hot-toast";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { useRouter } from "next/router";
 
 import { Input, Button } from ".";
 import axios from "../axios/axiosInstance";
 import { ErrorHandler } from "../utils/errorHandler";
 import BackdropSpinner from "../components/BackdropSpinner";
+import { loginUser } from "../redux/actions/user.action";
+import { useDispatch } from "react-redux";
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
@@ -25,6 +28,8 @@ const SignupSchema = Yup.object().shape({
 const SignupForm = () => {
   const [loading, setLoading] = useState(false);
   const formRef = React.useRef(null);
+  const router = useRouter();
+  const dispatch = useDispatch();
 
   const formik = useFormik({
     initialValues: {
@@ -45,7 +50,7 @@ const SignupForm = () => {
     setLoading(true);
 
     try {
-      await axios({
+      const request = await axios({
         method: "post",
         url: "auth/register",
         data: values,
@@ -53,11 +58,17 @@ const SignupForm = () => {
 
       setLoading(false);
       resetForm();
-
-      toast.success(
-        "You have been successfully registered. Log into your account",
-        { duration: 6000, position: "top-center" }
-      );
+      if ("buyer" in router.query) {
+        toast.success(
+          "You have been successfully registered. Log into your account",
+          { duration: 6000, position: "top-center" }
+        );
+      } else {
+        if (request.status === 200) {
+          dispatch(loginUser(request.data.data, request.data.access_token));
+          router.push("fundwallet");
+        }
+      }
     } catch (e) {
       setLoading(false);
       const error = ErrorHandler(e);
