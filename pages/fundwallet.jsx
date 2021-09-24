@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
+import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
+
 import { Button, InputSelect, MainLayout } from "../components";
 
 const FundWallet = () => {
+  const user = useSelector((state) => state.user.user);
+  const token = useSelector((state) => state.user.token);
+
   const [value, setValue] = useState(null);
   const router = useRouter();
   const options = [
@@ -17,6 +22,8 @@ const FundWallet = () => {
     setValue(selectedOption);
   };
 
+  console.log(user, token);
+
   return (
     <>
       <Head>
@@ -27,8 +34,13 @@ const FundWallet = () => {
         <section className="register">
           <h2>Fund wallet</h2>
           <p>
-            Hey Gabi you are almost done setting up your trading account, fund
-            your exchange wallet and be on your way.
+            Hey
+            <span className="text-capitalize font-weight-bold">
+              {" "}
+              {user.name}{" "}
+            </span>
+            you are almost done setting up your trading account, fund your
+            exchange wallet and be on your way.
           </p>
           <h3>Select trading coin</h3>
           <InputSelect
