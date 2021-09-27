@@ -134,7 +134,25 @@ const OpenOffer = () => {
               <input
                 type="number"
                 onChange={({ target }) => {
-                  dispatch(setBuyerAmount(+target.value));
+                  let amount = +target.value;
+
+                  dispatch(setBuyerAmount(amount));
+
+                  if (amount >= offer?.min && offer?.max >= amount) {
+                    dispatch(
+                      setCoinAmount(Math.floor(amount / offer?.coin.price))
+                    );
+
+                    dispatch(
+                      setEscrowFee(
+                        (+process.env.ESCROW_PERCENTAGE / 100) *
+                          Math.floor(amount / offer?.coin.price)
+                      )
+                    );
+                  } else {
+                    dispatch(setCoinAmount(0));
+                    dispatch(setEscrowFee(0));
+                  }
                 }}
                 value={buyerAmount > 0 ? buyerAmount : ""}
                 placeholder="Amount"
@@ -149,7 +167,11 @@ const OpenOffer = () => {
           <div className="trades">
             <label>Amount in {offer?.coin.short_name}</label>
             <div className="input-field">
-              <input type="number" placeholder={offer?.rate} readOnly />
+              <input
+                type="number"
+                placeholder={coinAmount - escrowFee}
+                readOnly
+              />
               <span>{offer?.coin.short_name}</span>
             </div>
           </div>
@@ -165,17 +187,6 @@ const OpenOffer = () => {
         <Button
           onClick={() => {
             if (buyerAmount >= offer?.min && offer?.max >= buyerAmount) {
-              dispatch(
-                setCoinAmount(Math.floor(buyerAmount / offer?.coin.price))
-              );
-
-              dispatch(
-                setEscrowFee(
-                  (+process.env.ESCROW_PERCENTAGE / 100) *
-                    Math.floor(buyerAmount / offer?.coin.price)
-                )
-              );
-
               setOpen(true);
             } else {
               alert(`Trade limit: ${offer?.min} - ${offer?.max}`);
@@ -233,6 +244,8 @@ const OpenOffer = () => {
               <div className="btn-group">
                 <Button
                   onClick={() => {
+                    //dismiss all toasts
+                    toast.dismiss();
                     dispatch(resetOffer());
                     handleClose();
                   }}
