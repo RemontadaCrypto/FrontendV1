@@ -19,3 +19,9 @@ export const TradeInfoType = {
   SET_TRADE_INFO: 'SET_TRADE_INFO',
   CLEAR_TRADE_INFO: 'CLEAR_TRADE_INFO'
 };
+
+export const CoinsType = {
+  FETCH_COINS: 'FETCH_COINS',
+  SET_COINS: 'SET_COINS',
+  FETCH_COINS_FAILED: 'FETCH_COINS_FAILED'
+};
