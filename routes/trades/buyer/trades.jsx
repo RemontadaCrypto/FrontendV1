@@ -6,7 +6,7 @@ import _capitalize from "lodash.capitalize";
 
 import { Button, Info, Card } from "../../../components";
 import axios from "../../../axios/axiosInstance";
-import BackdropSpinner from "../../../components/BackdropSpinner";
+import BackdropSpinner from "../../../components/UI/BackdropSpinner";
 
 import {
   clearTradeInfo,

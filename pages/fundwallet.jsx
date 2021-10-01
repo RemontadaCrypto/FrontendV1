@@ -6,7 +6,7 @@ import QRCode from "react-qr-code";
 
 import { Button, InputSelect, MainLayout } from "../components";
 import { fetchCoins } from "../redux/actions/coins.action";
-import BackdropSpinner from "../components/BackdropSpinner";
+import BackdropSpinner from "../components/UI/BackdropSpinner";
 import toast from "react-hot-toast";
 
 const FundWallet = () => {

@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 import { Input, Button } from ".";
 import axios from "../axios/axiosInstance";
 import { ErrorHandler } from "../utils/errorHandler";
-import BackdropSpinner from "../components/BackdropSpinner";
+import BackdropSpinner from "./UI/BackdropSpinner";
 import { loginUser } from "../redux/actions/user.action";
 import { useDispatch } from "react-redux";
 

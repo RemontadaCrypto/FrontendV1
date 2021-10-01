@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import InputSelect from "../InputSelect";
+import InputSelect from "../UI/InputSelect";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCoins } from "../../redux/actions/coins.action";
 

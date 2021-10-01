@@ -9,7 +9,7 @@ import { Button, Info, Modal } from "../../components";
 import isNairaDollar from "../../utils/isNairaDollar";
 
 import axios from "../../axios/axiosInstance";
-import BackdropSpinner from "../../components/BackdropSpinner";
+import BackdropSpinner from "../../components/UI/BackdropSpinner";
 
 import {
   resetOffer,
@@ -17,6 +17,7 @@ import {
   setBuyerAmount,
   setEscrowFee,
 } from "../../redux/actions/buyer-offer.action";
+import { ErrorHandler } from "../../utils/errorHandler";
 
 const infoArray = [
   "Please click on message link above to say hello and handle transactions information with buyer",
@@ -72,18 +73,12 @@ const OpenOffer = () => {
       });
 
       router.replace(`/trades/${data.id}/show`);
-    } catch (error) {
+    } catch (err) {
       setLoading(false);
-
-      if (error.response && error.response.statusText) {
-        toast.error(error.response.statusText, {
-          position: "top-center",
-        });
-      } else {
-        toast.error(error.message, {
-          position: "top-center",
-        });
-      }
+      const error = ErrorHandler(err);
+      toast.error(error || "Unable to initiate trade", {
+        position: "top-center",
+      });
     }
   };
 
