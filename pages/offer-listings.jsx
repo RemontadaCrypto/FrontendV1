@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import ReactPaginate from "react-paginate";
 
 import axios from "../axios/axiosInstance";
-import Spinner from "../components/Spinner";
+import Spinner from "../components/UI/Spinner";
 import OffersCard from "../components/OfferListings/OffersCard";
 import Filters from "../components/OfferListings/Filters";
 import { Layout } from "../components";

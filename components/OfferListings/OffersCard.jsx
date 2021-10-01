@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import _capitalize from "lodash.capitalize";
 
 import { selectOffer } from "../../redux/actions/selected-offer.action";
-import Button from "../Button";
+import Button from "../UI/Button";
 import isNairaDollar from "../../utils/isNairaDollar";
 
 const OffersCard = ({ offers }) => {

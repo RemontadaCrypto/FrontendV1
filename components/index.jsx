@@ -1,13 +1,25 @@
-import MainLayout from "./MainLayout"
-import Layout from "./Layout"
-import Input from "./Input"
-import Info from "./Info"
-import Button from "./Button"
-import Modal from "./Modal"
-import Loading from "./Loading"
-import InputSelect from "./InputSelect"
-import BuyerCard from "./BuyerCard"
-import TradeCard from "./TradeCard"
-import Card from "./Card"
+import MainLayout from "./UI/MainLayout";
+import Layout from "./UI/Layout";
+import Input from "./UI/Input";
+import Info from "./UI/Info";
+import Button from "./UI/Button";
+import Modal from "./UI/Modal";
+import Loading from "./UI/Loading";
+import InputSelect from "./UI/InputSelect";
+import BuyerCard from "./BuyerCard";
+import TradeCard from "./TradeCard";
+import Card from "./UI/Card";
 
-export { Layout, MainLayout, Button, Loading, InputSelect, Input, Info, Modal, BuyerCard, Card, TradeCard }
+export {
+  Layout,
+  MainLayout,
+  Button,
+  Loading,
+  InputSelect,
+  Input,
+  Info,
+  Modal,
+  BuyerCard,
+  Card,
+  TradeCard,
+};

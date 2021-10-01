@@ -10,7 +10,7 @@ import axios from "../axios/axiosInstance";
 import { useRouter } from "next/router";
 import { Input, Button } from ".";
 import { ErrorHandler } from "../utils/errorHandler";
-import BackdropSpinner from "./BackdropSpinner";
+import BackdropSpinner from "./UI/BackdropSpinner";
 
 const SigninSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Email is Required"),

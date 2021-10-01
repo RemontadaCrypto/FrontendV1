@@ -17,21 +17,14 @@ const MainLayout = ({ children, text, url, lg }) => {
       animate={{ opacity: 1, transition: { duration: 0.2, type: "tween" } }}
       className={lg ? "lg layout main" : "layout main"}
     >
-      {/* <header className="flex-ac-jb">
-        <Link href="/">
-          <a>
-            <Image src="/logo.svg" width={176} height={32} />
-          </a>
-        </Link>
-      </header> */}
-      <section className='layout__child'>
-        <nav className='layout__child__nav'>
-          <span role='button' onClick={handleRouter}>
+      <section className="layout__child">
+        <nav className="layout__child__nav">
+          <span role="button" onClick={handleRouter}>
             <RiArrowLeftLine />
             Back {text && `to ${text}`}
           </span>
         </nav>
-        <section className='layout__child__main flex-ac-jc'>{children}</section>
+        <section className="layout__child__main flex-ac-jc">{children}</section>
       </section>
     </motion.section>
   );
