@@ -5,7 +5,7 @@ import { fetchCoins } from "../../redux/actions/coins.action";
 
 import { filterArray, tradeArray } from "../../utils/selectOptions";
 
-function Filters() {
+function Filters({ coinCallback = () => {} }) {
   // FILTER STATES
   const [coinValue, setCoinValue] = useState(null);
   const [filterValue, setFilterValue] = useState(filterArray[0]);
@@ -21,6 +21,7 @@ function Filters() {
   // FILTER FUNCTIONS
   const handleCoin = (selectedOption) => {
     setCoinValue(selectedOption);
+    coinCallback(selectedOption?.value.toLowerCase());
   };
 
   const handleFilter = (selectedOption) => {

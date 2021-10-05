@@ -12,12 +12,13 @@ import toast from "react-hot-toast";
 const FundWallet = () => {
   const [coinAddresses, setCoinAddresses] = React.useState([]);
   const [selectedCoinAddress, setSelectedCoinAddress] = React.useState(null);
+  const [selectOptionValue, setSelectOptionValue] = useState(null);
+
   const { user, isAuth } = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
   const { coins, loading, error } = useSelector((state) => state.coins);
 
-  const [value, setValue] = useState(null);
   const router = useRouter();
 
   useEffect(() => {
@@ -42,7 +43,7 @@ const FundWallet = () => {
   }, [error]);
 
   const handleChange = (selectedOption) => {
-    setValue(selectedOption);
+    setSelectOptionValue(selectedOption);
     const address = coinAddresses.find((adr) => adr[selectedOption.value]);
     setSelectedCoinAddress(address[selectedOption.value].address);
   };
@@ -68,7 +69,7 @@ const FundWallet = () => {
           </p>
           <h3>Select trading coin</h3>
           <InputSelect
-            value={value}
+            value={selectOptionValue || ""}
             onChange={handleChange}
             placeholder="Select trading coin"
             options={
@@ -93,7 +94,11 @@ const FundWallet = () => {
           </div>
           <Button
             onClick={() => {
-              router.push("/create-offer");
+              if (selectOptionValue) {
+                router.push("/create-offer");
+              } else {
+                alert("Select a trading coin");
+              }
             }}
             text="Continue"
             btnClass="btn btn--primary"

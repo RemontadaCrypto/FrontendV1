@@ -19,10 +19,11 @@ const offerlistings = () => {
   const [page, setPage] = React.useState(0);
   const [offset, setOffset] = React.useState(0);
   const [meta, setMeta] = React.useState(null);
+  const [tradingCoin, setTradingCoin] = React.useState("");
 
   React.useEffect(() => {
     getAllOffers();
-  }, [page]);
+  }, [page, tradingCoin]);
 
   const getAllOffers = async () => {
     //dismiss all toasts
@@ -33,7 +34,7 @@ const offerlistings = () => {
     try {
       const request = await axios({
         method: "get",
-        url: `/offers?limit=${LIMIT}&offset=${offset}`,
+        url: `/offers?coin=${tradingCoin}&limit=${LIMIT}&offset=${offset}`,
         headers: { Authorization: `Bearer ${token}` },
       });
       setOffers(request.data.data);
@@ -64,7 +65,11 @@ const offerlistings = () => {
       <Layout>
         <section className="offer-listings">
           <h2>Buy CryptoCurrency</h2>
-          <Filters />
+          <Filters
+            coinCallback={(coin) => {
+              setTradingCoin(coin);
+            }}
+          />
           {loading && <Spinner />}
           {!loading && offers?.length === 0 && (
             <div
