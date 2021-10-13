@@ -27,7 +27,7 @@ const UnAuthenticated = [
 const Authenticated = [
   {
     text: "Buy",
-    url: "#",
+    url: "offer-listings",
   },
   {
     text: "Sell",
