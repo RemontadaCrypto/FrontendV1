@@ -1,4 +1,26 @@
 .header {
+  .navbar-toggler {
+    padding: 0.25rem 0.35rem !important;
+  }
+
+  @media (max-width: 380px) {
+    img {
+      object-fit: contain;
+      width: 120px;
+    }
+  }
+
+  @media (max-width: 251px) {
+    img {
+      margin-bottom: 10px;
+    }
+  }
+
+  .navbar-toggler-icon {
+    width: 1.1em;
+    height: 1.1em;
+  }
+
   li {
     cursor: pointer;
 
@@ -23,6 +45,7 @@
     }
   }
 }
+
 .navbar {
   position: sticky;
   top: 0;
