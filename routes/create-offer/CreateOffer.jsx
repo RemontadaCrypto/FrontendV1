@@ -21,9 +21,7 @@ var numberOnlyRegex = /^(?:[1-9]\d*|\d)$/;
 
 const OfferSchema = Yup.object().shape({
   coin: Yup.string().required("Select a trading coin"),
-  rate: Yup.string()
-    .matches(numberOnlyRegex, "Enter a valid trade rate")
-    .required("Naira or Dollar trade is required"),
+  rate: Yup.string().matches(numberOnlyRegex, "Enter a valid trade rate"),
   min: Yup.string()
     .matches(numberOnlyRegex, "Enter a valid minimum trade volume")
     .required("Minimum trade volume is required"),
@@ -37,7 +35,7 @@ const CreateOffer = () => {
   const token = useSelector((state) => state.user.token);
   const [selectValue, setSelectValue] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [open, setOpen] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
   const router = useRouter();
 
   React.useEffect(() => {
@@ -65,10 +63,10 @@ const CreateOffer = () => {
     toast.dismiss();
 
     setLoading(true);
-    setOpen(false);
+    setShowSuccessModal(false);
 
     try {
-      const response = await axios({
+      await axios({
         method: "post",
         url: "offers/store",
         data: values,
@@ -77,7 +75,7 @@ const CreateOffer = () => {
 
       setLoading(false);
       resetForm();
-      setOpen(true);
+      setShowSuccessModal(true);
     } catch (e) {
       setLoading(false);
       const error = ErrorHandler(e);
@@ -97,7 +95,7 @@ const CreateOffer = () => {
   };
 
   const handleClose = () => {
-    setOpen(false);
+    router.back();
   };
 
   return (
@@ -130,41 +128,8 @@ const CreateOffer = () => {
         </div>
         <h3>Set trade type</h3>
         <p>Set your prices to a specific dollar rate</p>
-        <div className="create-offer__cards text-center">
-          <div>
-            <TradeCard
-              handleChange={(event) => {
-                formik.setFieldValue("type", "naira");
-                formik.setFieldValue("rate", event.target.value);
-              }}
-              value={formik.values.type === "naira" ? formik.values.rate : ""}
-            />
-            {formik.touched.rate && formik.errors.rate ? (
-              <span className="text-danger mt-2 font-weight-bold">
-                {formik.values.type !== "dollar" || formik.values.type === ""
-                  ? formik.errors.rate
-                  : ""}
-              </span>
-            ) : null}
-          </div>
-          <div>
-            <TradeCard
-              USD
-              handleChange={(event) => {
-                formik.setFieldValue("type", "dollar");
-                formik.setFieldValue("rate", event.target.value);
-              }}
-              value={formik.values.type === "dollar" ? formik.values.rate : ""}
-            />
-            {formik.touched.rate && formik.errors.rate ? (
-              <span className="text-danger mt-2 font-weight-bold">
-                {formik.values.type !== "naira" || formik.values.type === ""
-                  ? formik.errors.rate
-                  : ""}
-              </span>
-            ) : null}
-          </div>
-        </div>
+
+        <TradeCard formik={formik} />
 
         <h3>Set trade volumes</h3>
         <div className="create-offer__trades">
@@ -180,7 +145,7 @@ const CreateOffer = () => {
               <span>{formik.values.type === "dollar" ? "USD" : "NGN"}</span>
             </div>
             {formik.touched.min && formik.errors.min ? (
-              <span className="text-light d-block text-center mt-2 font-weight-bold">
+              <span className="text-light d-block text-center mt-2 font-weight-bold position-absolute">
                 {formik.errors.min}
               </span>
             ) : null}
@@ -197,7 +162,7 @@ const CreateOffer = () => {
               <span>{formik.values.type === "dollar" ? "USD" : "NGN"}</span>
             </div>
             {formik.touched.max && formik.errors.max ? (
-              <span className="text-light d-block text-center mt-2 font-weight-bold">
+              <span className="text-light d-block text-center mt-2 font-weight-bold position-absolute">
                 {formik.errors.max}
               </span>
             ) : null}
@@ -214,7 +179,7 @@ const CreateOffer = () => {
           btnClass="btn btn--primary"
         />
         <AnimatePresence>
-          {open && (
+          {showSuccessModal && (
             <Modal handleClose={handleClose}>
               <h3>Offer created</h3>
               <svg
