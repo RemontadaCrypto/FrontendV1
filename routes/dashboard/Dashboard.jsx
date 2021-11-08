@@ -3,6 +3,8 @@ import { AnimatePresence } from "framer-motion"
 
 import { Layout, Tabs } from "../../components"
 import Trade from "./Trade"
+import Offer from "./Offer"
+import Disputes from "./Disputes"
 
 const Dashboard = () => {
 
@@ -22,7 +24,11 @@ const Dashboard = () => {
                 <Tabs tabList={tabList} tabs={tabs} handleTabs={handleTabs} />
                 <AnimatePresence>
                     {tabs[0] &&
-                        < Trade />}
+                        <Trade />}
+                    {tabs[1] &&
+                        <Offer />}
+                    {tabs[2] &&
+                        <Disputes />}
                 </AnimatePresence>
             </section>
         </Layout>
