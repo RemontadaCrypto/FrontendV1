@@ -22,9 +22,11 @@
 @import "./_components/card";
 @import "./_components/loader";
 @import "./_components/header";
+@import "./_components/tabs";
 
 // PAGES
 @import "./_pages/signup";
+@import "./_pages/dashboard";
 @import "./_pages/register";
 @import "./_pages/create-offer";
 @import "./_pages/offer-listings";

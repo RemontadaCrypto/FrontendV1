@@ -1,0 +1,238 @@
+.dashboard {
+  width: 100%;
+  max-width: 981px;
+  @extend .flex-ac-jc;
+  flex-direction: column;
+}
+
+.separator {
+  width: 100%;
+  height: 1px;
+  background: $gray-1;
+  margin: 50px 0;
+}
+
+.trades {
+  &__content {
+    width: 100%;
+  }
+
+  &__header {
+    @extend .flex-ac-jb;
+    gap: 20px;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 20px !important;
+    &.empty {
+      margin-bottom: 70px !important;
+    }
+    h3 {
+      font-weight: bold;
+      font-size: 1.5rem;
+      color: $white;
+    }
+    label {
+      max-width: 378px;
+      width: 100%;
+      height: 48px;
+      background: $white;
+      margin-bottom: 0;
+      border-radius: 4px;
+      padding-left: 50px;
+      position: relative;
+      &::before {
+        content: "";
+        background: url("data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.0213 10.0779L13.8767 12.9326L12.9333 13.8759L10.0787 11.0206C9.01648 11.8721 7.69532 12.3352 6.33398 12.3333C3.02198 12.3333 0.333984 9.64525 0.333984 6.33325C0.333984 3.02125 3.02198 0.333252 6.33398 0.333252C9.64598 0.333252 12.334 3.02125 12.334 6.33325C12.3359 7.69459 11.8728 9.01575 11.0213 10.0779ZM9.68398 9.58325C10.5301 8.71318 11.0026 7.54687 11.0007 6.33325C11.0007 3.75459 8.91198 1.66659 6.33398 1.66659C3.75532 1.66659 1.66732 3.75459 1.66732 6.33325C1.66732 8.91125 3.75532 10.9999 6.33398 10.9999C7.5476 11.0018 8.71391 10.5293 9.58398 9.68325L9.68398 9.58325Z' fill='%234F4F4F'/%3E%3C/svg%3E%0A");
+        width: 14px;
+        height: 14px;
+        position: absolute;
+        top: 18px;
+        left: 18px;
+      }
+    }
+    input[type="search"] {
+      width: 100%;
+      height: 100%;
+      border: none !important;
+      outline: none !important;
+      &::placeholder {
+        font-size: 0.875rem;
+        color: $gray-2;
+      }
+    }
+  }
+
+  &__main {
+    text-align: center;
+    p {
+      font-size: 1.5rem;
+      line-height: 40px;
+      color: $gray-4;
+      width: 100%;
+      max-width: 604px;
+      margin: auto;
+      margin-bottom: 50px;
+    }
+    button {
+      width: 100%;
+      max-width: 226px;
+      height: 64px;
+      text-align: center;
+    }
+  }
+
+  footer {
+    font-size: 24px;
+    line-height: 40px;
+    color: $gray-4;
+    text-align: center;
+  }
+}
+
+.trade__card {
+  background: $white;
+  width: 100%;
+  max-width: 982px;
+  min-height: 184px;
+  padding: 40px;
+  border-radius: 16px;
+  margin-bottom: 20px;
+  @extend .flex-ac-jb;
+  &__left {
+    width: 75%;
+    @extend .flex-ac-jb;
+    &__text {
+      width: 80%;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      div {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        p {
+          display: flex;
+          align-items: center;
+          gap: 7px;
+        }
+      }
+      h5 {
+        font-weight: bold;
+        font-size: 1rem;
+      }
+      p {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  &__right {
+    button {
+      width: 130px;
+      height: 64px;
+    }
+  }
+}
+
+@include media("<=tablet2x") {
+  .trade__card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+
+    &__left {
+      width: 100%;
+      gap: 8%;
+      &__text {
+        align-items: center;
+        width: 100%;
+      }
+    }
+  }
+}
+
+@include media("<=phone3x") {
+  .trade__card {
+    padding: 25px;
+    &__left {
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+  }
+}
+
+@include media("<=650px") {
+  .trade__card {
+    padding: 25px;
+    &__left {
+      &__text {
+        div {
+          p {
+            flex-direction: column;
+            align-items: flex-start;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include media("<=phone2x") {
+  .separator {
+    margin: 30px 0;
+  }
+
+  .trades {
+    header {
+      margin-bottom: 35px;
+    }
+    &__main {
+      text-align: center;
+      p {
+        font-size: 1.25rem;
+        line-height: 30px;
+      }
+    }
+
+    footer {
+      font-size: 1.25rem;
+      line-height: 30px;
+    }
+  }
+}
+
+@include media("<=450px") {
+  .trade__card {
+    padding: 25px;
+    &__left {
+      &__text {
+        flex-direction: column;
+        align-items: flex-start;
+        div {
+          p {
+            flex-direction: row;
+            align-items: flex-start;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include media("<=phone") {
+  .trade__card {
+    padding: 20px;
+    &__left {
+      &__text {
+        div {
+          gap: 1rem;
+          p {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 2px;
+          }
+        }
+      }
+    }
+  }
+}

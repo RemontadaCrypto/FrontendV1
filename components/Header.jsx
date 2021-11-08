@@ -27,15 +27,15 @@ const UnAuthenticated = [
 const Authenticated = [
   {
     text: "Buy",
-    url: "offer-listings",
+    url: "/offer-listings",
   },
   {
     text: "Sell",
-    url: "fundwallet",
+    url: "/fundwallet",
   },
   {
     text: "Dashboard",
-    url: "#",
+    url: "/dashboard",
   },
   {
     text: "Wallet",
